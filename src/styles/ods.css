@@ -1,0 +1,10 @@
+.ods-contain-info > div {
+  border: 3px solid black;
+  height: 30rem;
+}
+
+@media (max-width: 767px) {
+  .ods-contain-info > div {
+    margin-top: 3rem;
+  }
+}

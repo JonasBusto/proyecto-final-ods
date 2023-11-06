@@ -1,0 +1,24 @@
+.titulo p {
+  text-align: center;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.ods-contain img {
+  border: 3px solid black;
+  padding: 0.1rem;
+}
+
+.ods-progreso {
+  width: 90%;
+  margin: 0 auto;
+  border: 3px solid black;
+  height: 2rem;
+  margin-top: 0.5rem;
+  display: flex;
+}
+
+.ods-progreso > div {
+  transition: 0.8s all ease-in-out;
+}
