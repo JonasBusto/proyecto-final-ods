@@ -28,11 +28,11 @@ const Reportes = () => {
   }
 
   const data = {
-    labels: ["Q1", "Q2", "Q3", "Q4"],
+    labels: ods.map((o) => o.nombre),
     datasets: [
       {
-        label: "Sales",
-        data: ods.nombre,
+        label: "Porcentaje cumplido de ODS",
+        data: ods.map((o) => o.progreso),
         backgroundColor: generarColores(arrayData),
       },
     ],
@@ -51,7 +51,122 @@ const Reportes = () => {
         <p>Reportes</p>
       </div>
       <div>
-        <Chart type="bar" data={data} options={options} />
+        <div className="row m-0">
+          <div className="col-12 col-md-6 ">
+            <Chart
+              type="bar"
+              data={{
+                labels: ods.map((o) => o.nombre),
+                datasets: [
+                  {
+                    label: "Porcentaje cumplido de ODS",
+                    data: ods.map((o) => o.progreso),
+                    backgroundColor: generarColores(arrayData),
+                  },
+                ],
+              }}
+              options={{
+                indexAxis: "y",
+                aspectRatio: 1.1,
+              }}
+            />
+          </div>
+          <div className="col-12 col-md-6 ">
+            <Chart
+              type="doughnut"
+              data={{
+                labels: ods.map((o) => o.nombre),
+                datasets: [
+                  {
+                    label: "Porcentaje cumplido de ODS",
+                    data: ods.map((o) => o.progreso),
+                    backgroundColor: generarColores(arrayData),
+                  },
+                ],
+              }}
+              options={{
+                indexAxis: "y",
+                aspectRatio: 1.1,
+              }}
+            />
+          </div>
+          <div className="col-12 col-md-6 ">
+            <Chart
+              type="pie"
+              data={{
+                labels: ods.map((o) => o.nombre),
+                datasets: [
+                  {
+                    label: "Porcentaje cumplido de ODS",
+                    data: ods.map((o) => o.progreso),
+                    backgroundColor: generarColores(arrayData),
+                  },
+                ],
+              }}
+              options={{
+                indexAxis: "y",
+                aspectRatio: 1.1,
+              }}
+            />
+          </div>
+          <div className="col-12 col-md-6">
+            <Chart
+              type="line"
+              data={{
+                labels: ods.map((o) => o.nombre),
+                datasets: [
+                  {
+                    label: "Porcentaje cumplido de ODS",
+                    data: ods.map((o) => o.progreso),
+                    backgroundColor: generarColores(arrayData),
+                  },
+                ],
+              }}
+              options={{
+                indexAxis: "y",
+                aspectRatio: 1.1,
+              }}
+            />
+          </div>
+          <div className="col-12 col-md-6 ">
+            <Chart
+              type="polarArea"
+              data={{
+                labels: ods.map((o) => o.nombre),
+                datasets: [
+                  {
+                    label: "Porcentaje cumplido de ODS",
+                    data: ods.map((o) => o.progreso),
+                    backgroundColor: generarColores(arrayData),
+                  },
+                ],
+              }}
+              options={{
+                indexAxis: "y",
+                aspectRatio: 1.1,
+              }}
+            />
+          </div>
+          <div className="col-12 col-md-6 ">
+            <Chart
+              type="radar"
+              data={{
+                labels: ods.map((o) => o.nombre),
+                datasets: [
+                  {
+                    label: "Porcentaje cumplido de ODS",
+                    data: ods.map((o) => o.progreso),
+                    backgroundColor: generarColores(arrayData),
+                  },
+                ],
+              }}
+              options={{
+                indexAxis: "y",
+                aspectRatio: 1.1,
+              }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

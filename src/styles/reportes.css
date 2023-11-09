@@ -3,11 +3,11 @@
   padding: 2rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 1rem;
-  width: 30rem;
-
-  display: flex;
 }
 
-.p-chart > canvas {
-  height: 100%;
+@media (max-width: 500px) {
+  .p-chart {
+    width: 90vw;
+    /* height: 30rem !; */
+  }
 }

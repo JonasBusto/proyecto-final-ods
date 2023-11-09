@@ -7,19 +7,25 @@ import "../styles/home.css";
 const Home = () => {
   const colores = ["red", "blue", "orange", "green", "yellow", "purple"];
 
-  // const [apiQosqo, setApiQosqo] = useState([]);
+  const [apiQosqo, setApiQosqo] = useState([]);
 
   // useEffect(() => {
   //   var requestOptions = {
   //     method: "GET",
-  //     mode: "cors",
+  //     // mode: "cors",
   //     headers: {
   //       "Access-Control-Allow-Origin": "*",
-  //       "Access-Control-Allow-Methods": "GET, POST, DELETE, PUT, OPTIONS, HEAD",
-  //       "Access-Control-Max-Age": 0,
+  //       // "Access-Control-Allow-Methods": "GET, POST, DELETE, PUT, OPTIONS, HEAD",
+  //       // "Access-Control-Max-Age": 0,
   //       // "Access-Control-Allow-Headers": "*",
   //       "Access-Control-Allow-Credentials": true,
-  //       "X-Rack-CORS": "hit",
+  //       // "X-Rack-CORS": "hit",
+
+  //       "Access-Control-Allow-Methods":
+  //         "POST, PUT, PATCH, GET, DELETE, OPTIONS",
+
+  //       "Access-Control-Allow-Headers":
+  //         "Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization",
   //       "X-Redmine-API-Key": "2012f6129155973b74e397477b5ee37b40fca0de",
   //     },
   //     redirect: "follow",
