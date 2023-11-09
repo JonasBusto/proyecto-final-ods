@@ -1,7 +1,13 @@
 import React from "react";
+import NavPage from "./NavPage";
+import "../styles/header.css";
 
 const Header = () => {
-  return <div></div>;
+  return (
+    <header>
+      <NavPage />
+    </header>
+  );
 };
 
 export default Header;

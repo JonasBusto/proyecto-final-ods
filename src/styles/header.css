@@ -1,0 +1,33 @@
+header {
+  background-color: #435585;
+  /* background-color: rgb(0, 40, 65); */
+}
+
+.container > button {
+  background-color: white;
+}
+
+.navbar-brand {
+  color: white;
+  font-weight: 600;
+  display: flex;
+}
+
+.navbar-brand img {
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  border-radius: 100%;
+  transition: 0.5s all ease-in-out;
+}
+
+.navbar-brand > img:hover {
+  filter: invert(0.2);
+}
+
+.navbar-collapse > a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 0.3rem;
+}
