@@ -5,7 +5,7 @@ import ODScard from "../components/ODScard";
 import "../styles/home.css";
 
 const Home = () => {
-  const colores = ["red", "blue", "orange", "green", "yellow", "purple"];
+  const colores = ["red", "orange", "yellow", "green"];
 
   const [apiQosqo, setApiQosqo] = useState([]);
 
@@ -46,7 +46,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="titulo">
+      <div className="titulo" style={{ marginTop: "4rem" }}>
         <p>Progreso en ODS de la STD</p>
       </div>
       <div className="row m-0">
@@ -55,7 +55,18 @@ const Home = () => {
             key={o.id}
             o={o}
             cols={"col-6 col-md-4 col-lg-2"}
-            color={colores[Math.floor(Math.random() * (colores.length - 1))]}
+            color={
+              (Number(o.progreso) >= 0 &&
+                Number(o.progreso) <= 40 &&
+                colores[0]) ||
+              (Number(o.progreso) >= 41 &&
+                Number(o.progreso) <= 65 &&
+                colores[1]) ||
+              (Number(o.progreso) >= 66 &&
+                Number(o.progreso) <= 99 &&
+                colores[2]) ||
+              (Number(o.progreso) == 100 && colores[3])
+            }
           />
         ))}
       </div>

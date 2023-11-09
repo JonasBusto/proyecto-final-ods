@@ -1,4 +1,4 @@
-header {
+header > .nav-custom-div {
   background-color: #435585;
   /* background-color: rgb(0, 40, 65); */
 }
@@ -30,4 +30,16 @@ header {
   text-decoration: none;
   font-weight: 600;
   margin: 0 0.3rem;
+}
+
+.header-main p {
+  text-align: center;
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.header-main > div {
+  max-width: 1100px;
+  margin: 0 auto;
 }

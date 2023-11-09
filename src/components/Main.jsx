@@ -7,7 +7,7 @@ import Reportes from "../pages/Reportes";
 
 const Main = () => {
   return (
-    <main className="mt-2 mx-auto" style={{ maxWidth: "1300px" }}>
+    <main className="mt-2 mx-auto" style={{ maxWidth: "1500px" }}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ods/:id" element={<ODS />} />
