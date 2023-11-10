@@ -21,8 +21,8 @@ const NavPage = () => {
             <Nav.Link as={Link} to="/" eventKey="1">
               <i className="fa-solid fa-chalkboard"></i> Tablero de Control
             </Nav.Link>
-            <Nav.Link as={Link} to="/sobre" eventKey="2">
-              <i className="fa-regular fa-snowflake"></i> Sobre la web
+            <Nav.Link as={Link} to="/sobreODS" eventKey="2">
+              <i className="fa-regular fa-snowflake"></i> Sobre ODS
             </Nav.Link>
             {/* <Nav.Link as={Link} to="/" eventKey="2" disabled>
               <i className="fa-regular fa-snowflake"></i> ODS

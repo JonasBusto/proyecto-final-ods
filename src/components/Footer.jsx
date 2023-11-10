@@ -6,11 +6,13 @@ const Footer = () => {
   return (
     <footer className="mt-auto d-flex flex-column justify-content-center align-items-center">
       <div className="d-flex justify-content-start">
-        <img
-          className="img-fluid"
-          src="https://res.cloudinary.com/dtccrvpzp/image/upload/v1699624470/Proyecto%20Final/e9yrg22sdlovphzw1gql.png"
-          alt="logo_footer"
-        />
+        <div style={{ width: "100%", maxWidth: "1300px", margin: "0 auto" }}>
+          <img
+            className="img-fluid"
+            src="https://res.cloudinary.com/dtccrvpzp/image/upload/v1699624470/Proyecto%20Final/e9yrg22sdlovphzw1gql.png"
+            alt="logo_footer"
+          />
+        </div>
       </div>
       <div className="footer-info">
         <div style={{ maxWidth: "1400px" }}>
@@ -22,7 +24,7 @@ const Footer = () => {
                   Esta pagina, en conjunto con la UTN FRT, brinda la posibilidad
                   de visibilizar información e impacto de los Objetivos de
                   Desarrollo Sostenible (ODS) de los proyectos dentro de la
-                  institución.
+                  institución. *agregar/cambiar esta descripcion*
                 </p>
               </div>
               <div className="info-col-footer">
@@ -58,7 +60,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="info-col-footer">
-                <h5>Agradecimientos a: </h5>
+                <h5>Agradecimientos a</h5>
                 <div className="d-flex flex-column">
                   <ul>
                     <li>Apellido, nombres de la persona</li>

@@ -1,0 +1,54 @@
+.contain-info-sobre-ods>div {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 0.8rem 1rem;
+    max-width: 1200px;
+    height: 30vw;
+    max-height: 17rem;
+}
+
+.contain-img-sobre-ods {
+    min-width: 18rem;
+}
+
+.contain-info-sobre-ods>div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contain-info-sobre-ods>div p {
+    margin: 0;
+}
+
+.contain-info-sobre-ods>div .titulo-card-sobre-ods{
+    background-color: rgb(241, 241, 241);
+    padding: 0.4rem;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+
+.contain-info-sobre-ods>div .desc-card-sobre-ods{
+    padding: 0.2rem 0.7rem;
+    line-height: 1.2rem;
+}
+
+.titulo-sobre-ods {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0;
+}
+
+.titulo-card-sobre-ods>a {
+    font-size: 0.8rem;
+    margin-left: 1rem;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.desc-sobre-ods {
+    margin: 0 1rem;
+}

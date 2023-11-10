@@ -2,8 +2,9 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import ODS from "../pages/ODS";
-import Error404 from "../pages/Error404";
 import Reportes from "../pages/Reportes";
+import SobreODS from "../pages/SobreODS";
+import Error404 from "../pages/Error404";
 
 const Main = () => {
   return (
@@ -12,6 +13,7 @@ const Main = () => {
         <Route path="/" element={<Home />} />
         <Route path="/ods/:id" element={<ODS />} />
         <Route path="reportes" element={<Reportes />} />
+        <Route path="sobreODS" element={<SobreODS />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </main>

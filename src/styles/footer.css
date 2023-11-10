@@ -10,7 +10,7 @@ footer>div:first-child {
   background-color: rgb(50,39,71);
 }
 
-footer>div:first-child>img {
+footer>div:first-child img {
   width: 35rem;
   margin: 1rem 0;
   margin-left: 2rem;
