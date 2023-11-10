@@ -10,6 +10,7 @@ import { Column } from "primereact/column";
 import { FilterMatchMode } from "primereact/api";
 import { InputText } from "primereact/inputtext";
 import { Link } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 
 const ODS = () => {
   const { id } = useParams();
@@ -17,33 +18,89 @@ const ODS = () => {
   const [filters, setFilters] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
   });
+  const colores = ["red", "yellow", "green", "#16FF00"];
 
-  const [expandedRows, setExpandedRows] = useState(null);
+  const accion = (proyecto_ods) => {
+    const [show, setShow] = useState(false);
 
-  const allowExpansion = (rowData) => {
-    return rowData.custom_fields.length > 0;
-  };
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-  const rowExpansionTemplate = (data) => {
+    const [show2, setShow2] = useState(false);
+
+    const handleClose2 = () => setShow2(false);
+    const handleShow2 = () => setShow2(true);
+
     return (
-      <div className="p-3 sub-table-custom">
-        <h5>Objetivis del {data.nombre}</h5>
-        <DataTable value={data.orders} emptyMessage="Sin resultados">
-          <Column field="id" header="Id" sortable></Column>
-          <Column field="name" header="Objetivo" sortable></Column>
-        </DataTable>
+      <div>
+        <div className="btn-acciones">
+          <button onClick={handleShow}>Detalle</button>
+          <button onClick={handleShow2}>Objetivos</button>
+        </div>
+        <Modal className="modal-custom-accion" show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>
+              {"Detalle del proyecto " + proyecto_ods.id}
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur
+            obcaecati laudantium, rerum perspiciatis inventore laboriosam
+            ducimus quae eos adipisci ut, quis nemo nihil doloremque magnam,
+            optio sunt officiis odit possimus?
+          </Modal.Body>
+          <Modal.Footer>
+            <div className="btn-acciones">
+              <button onClick={handleClose}>Cerrar</button>
+            </div>
+          </Modal.Footer>
+        </Modal>
+
+        <Modal
+          className="modal-custom-accion"
+          show={show2}
+          onHide={handleClose2}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>
+              {"Objetivos del proyecto " + proyecto_ods.id}
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur
+            obcaecati laudantium, rerum perspiciatis inventore laboriosam
+            ducimus quae eos adipisci ut, quis nemo nihil doloremque magnam,
+            optio sunt officiis odit possimus?
+          </Modal.Body>
+          <Modal.Footer>
+            <div className="btn-acciones">
+              <button onClick={handleClose2}>Cerrar</button>
+            </div>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   };
 
   return (
-    <div>
+    <div style={{ marginBottom: "3rem" }}>
       <div className="titulo">
         <p>{"ODS " + odsObjeto.id + ": " + odsObjeto.nombre}</p>
       </div>
       <div className="row m-0">
         <ODScard
-          color={"red"}
+          color={
+            (Number(odsObjeto.progreso) >= 0 &&
+              Number(odsObjeto.progreso) <= 33 &&
+              colores[0]) ||
+            (Number(odsObjeto.progreso) >= 34 &&
+              Number(odsObjeto.progreso) <= 66 &&
+              colores[1]) ||
+            (Number(odsObjeto.progreso) >= 66 &&
+              Number(odsObjeto.progreso) <= 99 &&
+              colores[2]) ||
+            (Number(odsObjeto.progreso) == 100 && colores[3])
+          }
           o={odsObjeto}
           cols={"col-10 col-md-4"}
           style={{ margin: "0 auto" }}
@@ -68,33 +125,22 @@ const ODS = () => {
               paginator
               removableSort
               selectionMode="single"
+              filters={filters}
               scrollable
               rows={5}
               emptyMessage="Sin resultados"
               rowsPerPageOptions={[5, 10, 25, 50]}
               value={proyectos}
-              expandedRows={expandedRows}
-              onRowToggle={(e) => setExpandedRows(e.data)}
-              rowExpansionTemplate={rowExpansionTemplate}
             >
-              <Column expander={allowExpansion} style={{ width: "5rem" }} />
               <Column
-                sortable
-                field="id"
-                header="ID"
-                style={{ minWidth: "100px" }}
-              ></Column>
-              <Column
-                sortable
                 field="nombre"
                 header="Proyecto"
                 style={{ minWidth: "250px" }}
               ></Column>
               <Column
-                sortable
-                field="desc"
-                header="Descripción"
-                style={{ minWidth: "400px" }}
+                header="Detalle"
+                body={accion}
+                style={{ minWidth: "100px" }}
               ></Column>
             </DataTable>
           </div>

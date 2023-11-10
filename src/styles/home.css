@@ -10,6 +10,37 @@
   padding: 0.1rem;
 }
 
+.ods-contain>a:hover {
+
+}
+
+.contain-img-card-ods {
+  position: relative;
+}
+
+.contain-img-card-ods>div:hover {
+  background-color: rgba(0, 0, 0, 0.781);
+  color: white;
+
+}
+
+.contain-img-card-ods>div {
+  background-color: transparent;
+  color: transparent;
+  transition: 0.7s all ease-in-out;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contain-img-card-ods>div>p {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
 .ods-progreso {
   width: 90%;
   margin: 0 auto;

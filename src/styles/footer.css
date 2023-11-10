@@ -1,6 +1,5 @@
 footer>div {
   width: 100%;
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,16 +11,16 @@ footer>div:first-child {
 }
 
 footer>div:first-child>img {
-  width: 40rem;
+  width: 35rem;
   margin: 1rem 0;
-  margin-right: 20vw;
+  margin-left: 2rem;
   object-fit: cover;
 }
 
 .footer-info{
   background-color: rgb(63,47,89);
 }
-s
+
 footer>div:last-child{
   
   height: 2.4rem;
@@ -29,7 +28,7 @@ footer>div:last-child{
 }
 
 
-footer p {
+footer p, footer li {
   margin: 0;
   color: white;
  
@@ -37,6 +36,7 @@ footer p {
 
 .info-col-footer {
   margin: 1rem 0;
+  min-height: 10rem;
 }
 
 .info-col-footer h5 {

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="mt-auto d-flex flex-column justify-content-center align-items-center">
-      <div className="d-flex">
+      <div className="d-flex justify-content-start">
         <img
           className="img-fluid"
           src="http://www.frt.utn.edu.ar/2017/img/logoFooter.png"
@@ -49,20 +49,22 @@ const Footer = () => {
               <div className="info-col-footer">
                 <h5>Integrantes</h5>
                 <div className="d-flex flex-column">
-                  <p>Antonuccio, Juan Ignacio</p>
-                  <p>Busto, Kevin Jonás</p>
-                  <p>Paez Lopez, Javier Alfredo</p>
-                  <p>Rebolleda, Jose Ignacio</p>
+                  <ul>
+                    <li>Antonuccio, Juan Ignacio</li>
+                    <li>Busto, Kevin Jonás</li>
+                    <li>Paez Lopez, Javier Alfredo</li>
+                    <li>Rebolleda, Jose Ignacio</li>
+                  </ul>
                 </div>
               </div>
               <div className="info-col-footer">
                 <h5>Agradecimientos a: </h5>
                 <div className="d-flex flex-column">
-                  <p>Apellido, nombres de la persona</p>
-                  <p>Apellido, nombres de la persona</p>
-                  <p>Apellido, nombres de la persona</p>
-                  <p>Apellido, nombres de la persona</p>
-                  <p>Apellido, nombres de la persona</p>
+                  <ul>
+                    <li>Apellido, nombres de la persona</li>
+                    <li>Apellido, nombres de la persona</li>
+                    <li>Apellido, nombres de la persona</li>
+                  </ul>
                 </div>
               </div>
             </div>
