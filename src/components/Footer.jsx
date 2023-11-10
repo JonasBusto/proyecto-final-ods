@@ -6,11 +6,7 @@ const Footer = () => {
   return (
     <footer className="mt-auto d-flex flex-column justify-content-center align-items-center">
       <div className="d-flex justify-content-start">
-        <img
-          className="img-fluid"
-          src="http://www.frt.utn.edu.ar/2017/img/logoFooter.png"
-          alt=""
-        />
+        <img className="img-fluid" src="../assets/logoFooter.png" alt="" />
       </div>
       <div className="footer-info">
         <div style={{ maxWidth: "1400px" }}>
