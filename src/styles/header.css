@@ -1,10 +1,11 @@
 header > .nav-custom-div {
-  background-color: #435585;
+  background-color: rgb(141,113,183);
+  /* background-color: #435585; */
   /* background-color: rgb(0, 40, 65); */
 }
 
 .container > button {
-  background-color: white;
+  /* background-color: white; */
 }
 
 .navbar-brand {
@@ -28,8 +29,7 @@ header > .nav-custom-div {
 .navbar-collapse > a {
   color: white;
   text-decoration: none;
-  font-weight: 600;
-  margin: 0 0.3rem;
+  margin: 0.8rem 0.3rem;
 }
 
 .header-main p {
@@ -42,4 +42,53 @@ header > .nav-custom-div {
 .header-main > div {
   max-width: 1100px;
   margin: 0 auto;
+}
+
+.header-main {
+  background-color: rgb(63,47,89);
+  margin: 0 !important;
+  padding: 1rem;
+}
+
+.first-nav>a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.first-nav>a:first-child {
+  width: 15vw;
+  height: 7rem;
+  max-width: 7rem;
+}
+
+.first-nav>a:last-child {
+  width: 30vw;
+  height: 7rem;
+  max-width: 12rem;
+}
+
+.first-nav>a:last-child>img {
+  transition: 1s all ease-in-out;
+  width: 94%;
+}
+
+.first-nav>a:first-child>img {
+  transition: 1s all ease-in-out;
+  width: 94%;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.first-nav>a>img:hover {
+  width: 100%;
+}
+
+.header-main {
+  margin: 0 3rem;
+}
+
+.first-nav>img {
+  width: 30vw;
+  max-width: 16rem;
 }

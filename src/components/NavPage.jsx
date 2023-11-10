@@ -12,18 +12,10 @@ const NavPage = () => {
         style={{ maxWidth: "1300px" }}
         collapseOnSelect
         expand="lg"
-        className="mt-2 mx-auto bg-nav-custom"
+        className="mx-auto bg-nav-custom"
       >
         <Container>
-          <Navbar.Brand>
-            <Link to="/">
-              <img
-                className="img-fluid"
-                src="https://knauf-industries.es/wp-content/uploads/CABECERA-CIRCULO-ODS-1200x1200.jpg"
-                alt=""
-              />
-            </Link>
-          </Navbar.Brand>
+          <Navbar.Brand></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav.Link as={Link} to="/" eventKey="1">
@@ -34,6 +26,9 @@ const NavPage = () => {
             </Nav.Link>
             <Nav.Link as={Link} to="/reportes" eventKey="3">
               <i className="fa-solid fa-chart-pie"></i> Reportes
+            </Nav.Link>
+            <Nav.Link as={Link} to="/reportes" eventKey="3">
+              <i className="fa-solid fa-chart-pie"></i> Sobre la web
             </Nav.Link>
           </Navbar.Collapse>
         </Container>

@@ -1,13 +1,84 @@
-footer {
-  height: 4rem;
-  background-color: #435585;
+footer>div {
+  width: 100%;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-footer > p {
+
+footer>div:first-child {
+  background-color: rgb(50,39,71);
+}
+
+footer>div:first-child>img {
+  width: 40rem;
+  margin: 1rem 0;
+  margin-right: 20vw;
+  object-fit: cover;
+}
+
+.footer-info{
+  background-color: rgb(63,47,89);
+}
+s
+footer>div:last-child{
+  
+  height: 2.4rem;
+  background-color: rgb(50,39,71);
+}
+
+
+footer p {
   margin: 0;
   color: white;
-  font-size: 1.7rem;
-  text-transform: uppercase;
-  font-weight: 700;
+ 
+}
+
+.info-col-footer {
+  margin: 1rem 0;
+}
+
+.info-col-footer h5 {
+  color: white;
+  text-align: start;
+  margin: 0;
+  margin-bottom: 0.3rem;
+}
+
+.info-col-footer p, .info-col-footer a {
+  text-align: start;
+  line-height: 1.1rem;
+  margin-right: 2rem;
+}
+
+.info-col-footer a {
+  color: #3cd1ef;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.info-col-footer .contacto-footer p {
+  line-height: normal;
+}
+
+.info-col-footer .contacto-footer p i {
+  margin-right: 0.5rem;
+}
+
+.contacto-footer-a a {
+  line-height: normal;
+}
+
+.footer-img>a {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+
+.footer-img img {
+  transition: 1s all ease-in-out;
+  width: 20%;
+  object-fit: cover;
+  border-radius: 100%;
 }
