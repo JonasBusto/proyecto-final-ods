@@ -12,14 +12,14 @@ const Header = () => {
             <img
               className="img-fluid"
               src="https://knauf-industries.es/wp-content/uploads/CABECERA-CIRCULO-ODS-1200x1200.jpg"
-              alt=""
+              alt="logo_inicio_nav"
             />
           </Link>
           <a href="http://www.frt.utn.edu.ar/" target="_blank">
             <img
               className="img-fluid"
-              src="http://www.frt.utn.edu.ar/2017/img/logo.png"
-              alt=""
+              src="https://res.cloudinary.com/dtccrvpzp/image/upload/v1699624532/Proyecto%20Final/ypdazcpvne7ifuodif7m.png"
+              alt="logo_nav_utn_frt"
             />
           </a>
         </div>

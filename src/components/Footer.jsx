@@ -6,7 +6,11 @@ const Footer = () => {
   return (
     <footer className="mt-auto d-flex flex-column justify-content-center align-items-center">
       <div className="d-flex justify-content-start">
-        <img className="img-fluid" src="../assets/logoFooter.png" alt="" />
+        <img
+          className="img-fluid"
+          src="https://res.cloudinary.com/dtccrvpzp/image/upload/v1699624470/Proyecto%20Final/e9yrg22sdlovphzw1gql.png"
+          alt="logo_footer"
+        />
       </div>
       <div className="footer-info">
         <div style={{ maxWidth: "1400px" }}>
@@ -87,7 +91,7 @@ const Footer = () => {
                   <img
                     className="img-fluid"
                     src="https://knauf-industries.es/wp-content/uploads/CABECERA-CIRCULO-ODS-1200x1200.jpg"
-                    alt=""
+                    alt="footer_logo_info"
                   />
                 </Link>
               </div>
