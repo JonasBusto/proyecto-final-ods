@@ -5,6 +5,7 @@ import ODS from "../pages/ODS";
 import Reportes from "../pages/Reportes";
 import SobreODS from "../pages/SobreODS";
 import Error404 from "../pages/Error404";
+import Proyectos from "../pages/Proyectos";
 
 const Main = () => {
   return (
@@ -14,6 +15,7 @@ const Main = () => {
         <Route path="/ods/:id" element={<ODS />} />
         <Route path="reportes" element={<Reportes />} />
         <Route path="sobreODS" element={<SobreODS />} />
+        <Route path="proyectos" element={<Proyectos />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </main>

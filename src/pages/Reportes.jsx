@@ -6,8 +6,6 @@ import "../styles/reportes.css";
 const Reportes = () => {
   const arrayData = [540, 325, 702, 620];
 
-  console.log(ods);
-
   function generarColores(array) {
     const coloresRGB = [];
     for (let i = 0; i < array.length; i++) {

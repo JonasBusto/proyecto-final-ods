@@ -30,6 +30,9 @@ const NavPage = () => {
             <Nav.Link as={Link} to="/reportes" eventKey="3">
               <i className="fa-solid fa-chart-pie"></i> Reportes
             </Nav.Link>
+            <Nav.Link as={Link} to="/proyectos" eventKey="4">
+              <i className="fa-regular fa-folder-open"></i> Proyectos
+            </Nav.Link>
             {/* <Nav.Link as={Link} to="/reportes" eventKey="3">
               <i className="fa-solid fa-chart-pie"></i> Sobre la web
             </Nav.Link> */}
