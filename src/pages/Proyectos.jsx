@@ -253,7 +253,7 @@ const Proyectos = () => {
                 <div className="row m-0">
                   <div className="col-12 col-lg-4 col-xxl-3 p-0">
                     <div className="row m-0">
-                      <p className="p-titulo-p-j">ODS en el que Impacta:</p>
+                      <p className="p-titulo-p-j">ODS en los que Impacta:</p>
                       {odsArray.map((o) => (
                         <ODScard
                           key={o.id}
