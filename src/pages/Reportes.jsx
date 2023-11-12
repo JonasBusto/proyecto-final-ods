@@ -62,7 +62,7 @@ const Reportes = () => {
             >
               <option value="">Todos</option>
               <option value="ods">ODS</option>
-              <option value="objetivos">Ojetivos</option>
+              <option value="objetivos">Objetivos</option>
               <option value="proyectos">Proyectos</option>
             </select>
           </div>

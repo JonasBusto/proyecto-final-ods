@@ -1,6 +1,10 @@
+/* main {
+  max-width: 1900px !important;
+} */
+
 .main-proyectos {
   width: 90vw !important;
-  max-width: 1400px;
+  max-width: 1400px !important;
 }
 
 .contain-info-proyectos {
@@ -50,4 +54,16 @@
 .datatable-proyectos td > span {
   padding: 1rem;
   width: 100%;
+}
+
+.contain-img-table-p-j img {
+  max-width: 5rem;
+}
+
+.p-titulo-p-j {
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: underline;
 }

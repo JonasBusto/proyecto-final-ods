@@ -22,6 +22,7 @@ const Proyectos = () => {
   const [mostrar, setMostrar] = useState(false);
   const [objetivosArray, setObjetivosArray] = useState([]);
   const [odsArray, setOdsArray] = useState([]);
+  const [odsPorObjArray, setOdsPorObjArray] = useState([]);
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
   const [seleccionarProyecto, setSeleccionarProyecto] = useState(null);
   const [metaKey, setMetaKey] = useState(true);
@@ -107,6 +108,49 @@ const Proyectos = () => {
     );
   };
 
+  const buscarOdsPorObjetivo = (objetivo) => {
+    let auxArray = [];
+
+    for (let i = 0; i < objetivo.custom_fields[0].value.length; i++) {
+      for (let j = 0; j < ods.length; j++) {
+        if (
+          ods[j].nombre.toLowerCase() ==
+          objetivo.custom_fields[0].value[i].toLowerCase()
+        ) {
+          auxArray.push(ods[j]);
+        }
+      }
+    }
+
+    return (
+      <div className="d-flex contain-img-table-p-j">
+        {auxArray.map((o) => (
+          <ODScard
+            key={o.id}
+            mostrarProgreso={false}
+            color={
+              (Number(o.progreso) >= 0 &&
+                Number(o.progreso) <= 33 &&
+                colores[0]) ||
+              (Number(o.progreso) >= 34 &&
+                Number(o.progreso) <= 66 &&
+                colores[1]) ||
+              (Number(o.progreso) >= 66 &&
+                Number(o.progreso) <= 99 &&
+                colores[2]) ||
+              (Number(o.progreso) == 100 && colores[3])
+            }
+            o={o}
+            cols={""}
+            style={{ margin: "0" }}
+          />
+        ))}
+      </div>
+    );
+
+    console.log(auxArray);
+  };
+
   const nombreField = (objetivo) => {
     return objetivo.asunto;
   };
@@ -184,7 +228,7 @@ const Proyectos = () => {
               <Column
                 body={nombreProyecto}
                 field={nombreProyectoField}
-                header="Proyecto"
+                header="Nombre del Proyecto"
                 style={{ minWidth: "250px" }}
               ></Column>
               {/* <Column
@@ -207,8 +251,9 @@ const Proyectos = () => {
             {objetivosArray.length !== 0 && (
               <div>
                 <div className="row m-0">
-                  <div className="col-12 col-lg-4 p-0">
+                  <div className="col-12 col-lg-4 col-xxl-3 p-0">
                     <div className="row m-0">
+                      <p className="p-titulo-p-j">ODS en el que Impacta:</p>
                       {odsArray.map((o) => (
                         <ODScard
                           key={o.id}
@@ -232,7 +277,7 @@ const Proyectos = () => {
                       ))}
                     </div>
                   </div>
-                  <div className="col-12 col-lg-8 ods-contain-info">
+                  <div className="col-12 col-lg-8 col-xxl-9 ods-contain-info">
                     <div>
                       <div className="d-flex flex-column align-items-center justify-content-between p-3 w-100 contain-input-search">
                         <InputText
@@ -263,6 +308,12 @@ const Proyectos = () => {
                           field={nombreField}
                           header="Objetivo"
                           body={accion}
+                          style={{ minWidth: "400px" }}
+                          // style={{ minWidth: "250px" }}
+                        ></Column>
+                        <Column
+                          header="ODS"
+                          body={buscarOdsPorObjetivo}
                           style={{ minWidth: "250px" }}
                         ></Column>
                         <Column

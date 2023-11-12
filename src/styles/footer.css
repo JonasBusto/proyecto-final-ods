@@ -1,37 +1,34 @@
-footer>div {
+footer > div {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-
-footer>div:first-child {
-  background-color: rgb(50,39,71);
+footer > div:first-child {
+  background-color: rgb(50, 39, 71);
 }
 
-footer>div:first-child img {
+footer > div:first-child img {
   width: 35rem;
   margin: 1rem 0;
   margin-left: 2rem;
   object-fit: cover;
 }
 
-.footer-info{
-  background-color: rgb(63,47,89);
+.footer-info {
+  background-color: rgb(63, 47, 89);
 }
 
-footer>div:last-child{
-  
+footer > div:last-child {
   height: 2.4rem;
-  background-color: rgb(50,39,71);
+  background-color: rgb(50, 39, 71);
 }
 
-
-footer p, footer li {
+footer p,
+footer li {
   margin: 0;
   color: white;
- 
 }
 
 .info-col-footer {
@@ -46,7 +43,8 @@ footer p, footer li {
   margin-bottom: 0.3rem;
 }
 
-.info-col-footer p, .info-col-footer a {
+.info-col-footer p,
+.info-col-footer a {
   text-align: start;
   line-height: 1.1rem;
   margin-right: 2rem;
@@ -70,7 +68,7 @@ footer p, footer li {
   line-height: normal;
 }
 
-.footer-img>a {
+.footer-img > a {
   display: flex;
   justify-self: center;
   align-items: center;
@@ -81,4 +79,10 @@ footer p, footer li {
   width: 20%;
   object-fit: cover;
   border-radius: 100%;
+}
+
+@media (max-width: 991px) {
+  .info-col-footer {
+    min-height: 0 !important;
+  }
 }

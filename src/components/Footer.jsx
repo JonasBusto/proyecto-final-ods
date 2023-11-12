@@ -24,7 +24,7 @@ const Footer = () => {
                   Esta pagina, en conjunto con la UTN FRT, brinda la posibilidad
                   de visibilizar información e impacto de los Objetivos de
                   Desarrollo Sostenible (ODS) de los proyectos dentro de la
-                  institución. *agregar/cambiar esta descripcion*
+                  institución.
                 </p>
               </div>
               <div className="info-col-footer">
@@ -41,7 +41,7 @@ const Footer = () => {
                   </p>
                   <p>
                     <i className="fa-regular fa-clock"></i>
-                    Información: Secretaira de Transformación Digital - Lunes a
+                    Información: Secretaria de Transformación Digital - Lunes a
                     Viernes de 9 a 13 hs y 15 a 21 hs
                   </p>
                 </div>
@@ -59,7 +59,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="info-col-footer">
+              {/* <div className="info-col-footer">
                 <h5>Agradecimientos a</h5>
                 <div className="d-flex flex-column">
                   <ul>
@@ -68,7 +68,7 @@ const Footer = () => {
                     <li>Apellido, nombres de la persona</li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="col-12 col-md-6 col-lg-4 d-flex flex-column">
               <div className="info-col-footer">
