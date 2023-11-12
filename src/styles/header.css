@@ -1,5 +1,5 @@
 header > .nav-custom-div {
-  background-color: rgb(141,113,183);
+  background-color: rgb(141, 113, 183);
   /* background-color: #435585; */
   /* background-color: rgb(0, 40, 65); */
 }
@@ -30,6 +30,7 @@ header > .nav-custom-div {
   color: white;
   text-decoration: none;
   margin: 0.8rem 0.9rem;
+  font-weight: 700;
 }
 
 .header-main p {
@@ -45,42 +46,42 @@ header > .nav-custom-div {
 }
 
 .header-main {
-  background-color: rgb(63,47,89);
+  background-color: rgb(63, 47, 89);
   margin: 0 !important;
   padding: 1rem;
 }
 
-.first-nav>a {
+.first-nav > a {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.first-nav>a:first-child {
+.first-nav > a:first-child {
   width: 15vw;
   height: 7rem;
   max-width: 7rem;
 }
 
-.first-nav>a:last-child {
+.first-nav > a:last-child {
   width: 30vw;
   height: 7rem;
   max-width: 12rem;
 }
 
-.first-nav>a:last-child>img {
+.first-nav > a:last-child > img {
   transition: 1s all ease-in-out;
   width: 94%;
 }
 
-.first-nav>a:first-child>img {
+.first-nav > a:first-child > img {
   transition: 1s all ease-in-out;
   width: 94%;
   object-fit: cover;
   border-radius: 100%;
 }
 
-.first-nav>a>img:hover {
+.first-nav > a > img:hover {
   width: 100%;
 }
 
@@ -88,7 +89,7 @@ header > .nav-custom-div {
   margin: 0 3rem;
 }
 
-.first-nav>img {
+.first-nav > img {
   width: 30vw;
   max-width: 16rem;
 }

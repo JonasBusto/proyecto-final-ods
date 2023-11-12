@@ -11,8 +11,16 @@ const SobreODS = () => {
       </p>
       <div className="d-flex flex-column">
         <div>
-          <p className="titulo-sobre-ods">Conoco que son los ODS</p>
+          <p className="titulo-sobre-ods">¿Qué son los ODS?</p>
           <div className="desc-sobre-ods">
+            <p>
+              Los 17 Objetivos de Desarrollo Sostenible (ODS) son medidas
+              adoptadas por los líderes mundiales para proteger el planeta,
+              luchar contra la pobreza y tratar de erradicarla con el objetivo
+              de construir un mundo más próspero, justo y sostenible para las
+              generaciones futuras. Estos objetivos se fijaron dentro de la
+              Agenda 2030 sobre el desarrollo sostenible.
+            </p>
             <p>
               Con los 17 ODS se buscó involucrar a gobiernos, empresas, sociedad
               civil y también a las personas a título individual. Dentro de cada
@@ -27,15 +35,17 @@ const SobreODS = () => {
           </div>
         </div>
         <div>
-          <p className="titulo-sobre-ods">¿Qué son los ODS?</p>
+          <p className="titulo-sobre-ods">Fruto de un consenso global</p>
           <div className="desc-sobre-ods">
             <p>
-              Los 17 Objetivos de Desarrollo Sostenible (ODS) son medidas
-              adoptadas por los líderes mundiales para proteger el planeta,
-              luchar contra la pobreza y tratar de erradicarla con el objetivo
-              de construir un mundo más próspero, justo y sostenible para las
-              generaciones futuras. Estos objetivos se fijaron dentro de la
-              Agenda 2030 sobre el desarrollo sostenible.
+              Los ODS tomaron el relevo de los Objetivos de Desarrollo del
+              Milenio (ODM), vigentes entre 2000 y 2015. A diferencia de sus
+              predecesores, se fueron perfilando con aportaciones
+              multidisciplinares de todo el mundo mediante una consulta global a
+              científicos, académicos, el sector privado y ciudadanos en
+              general. Su desarrollo comenzó en la Conferencia sobre Desarrollo
+              Sostenible Río+20 (2012) y entraron en vigor oficialmente el 1 de
+              enero de 2016.
             </p>
           </div>
         </div>
@@ -64,21 +74,6 @@ const SobreODS = () => {
               </div>
             </div>
           ))}
-        </div>
-        <div>
-          <p className="titulo-sobre-ods">Fruto de un consenso global</p>
-          <div className="desc-sobre-ods">
-            <p>
-              Los ODS tomaron el relevo de los Objetivos de Desarrollo del
-              Milenio (ODM), vigentes entre 2000 y 2015. A diferencia de sus
-              predecesores, se fueron perfilando con aportaciones
-              multidisciplinares de todo el mundo mediante una consulta global a
-              científicos, académicos, el sector privado y ciudadanos en
-              general. Su desarrollo comenzó en la Conferencia sobre Desarrollo
-              Sostenible Río+20 (2012) y entraron en vigor oficialmente el 1 de
-              enero de 2016.
-            </p>
-          </div>
         </div>
       </div>
     </div>

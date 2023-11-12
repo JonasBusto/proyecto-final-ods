@@ -21,18 +21,19 @@ const NavPage = () => {
             <Nav.Link as={Link} to="/" eventKey="1">
               <i className="fa-solid fa-chalkboard"></i> Tablero de Control
             </Nav.Link>
-            <Nav.Link as={Link} to="/sobreODS" eventKey="2">
+            <Nav.Link as={Link} to="/proyectos" eventKey="2">
+              <i className="fa-regular fa-folder-open"></i> Proyectos
+            </Nav.Link>
+            <Nav.Link as={Link} to="/reportes" eventKey="3">
+              <i className="fa-solid fa-chart-pie"></i> Reportes
+            </Nav.Link>
+            <Nav.Link as={Link} to="/sobreODS" eventKey="4">
               <i className="fa-regular fa-snowflake"></i> Sobre ODS
             </Nav.Link>
             {/* <Nav.Link as={Link} to="/" eventKey="2" disabled>
               <i className="fa-regular fa-snowflake"></i> ODS
             </Nav.Link> */}
-            <Nav.Link as={Link} to="/reportes" eventKey="3">
-              <i className="fa-solid fa-chart-pie"></i> Reportes
-            </Nav.Link>
-            <Nav.Link as={Link} to="/proyectos" eventKey="4">
-              <i className="fa-regular fa-folder-open"></i> Proyectos
-            </Nav.Link>
+
             {/* <Nav.Link as={Link} to="/reportes" eventKey="3">
               <i className="fa-solid fa-chart-pie"></i> Sobre la web
             </Nav.Link> */}
