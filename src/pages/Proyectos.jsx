@@ -226,7 +226,7 @@ const Proyectos = () => {
                             (Number(o.progreso) == 100 && colores[3])
                           }
                           o={o}
-                          cols={"col-12 col-lg-6"}
+                          cols={"col-6"}
                           style={{ margin: "0 auto" }}
                         />
                       ))}
