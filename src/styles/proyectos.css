@@ -28,3 +28,26 @@
 .titulo-proyecto-selec p {
   margin: 0;
 }
+
+.modal-objetivo-proyecto p {
+  margin: 0;
+  margin-bottom: 0.4rem;
+}
+
+.color-obj-modal {
+  transition: 0.5s all ease-in-out;
+}
+
+.color-obj-modal:hover {
+  color: blue;
+}
+
+.datatable-proyectos td {
+  padding: 0;
+  display: flex;
+}
+
+.datatable-proyectos td > span {
+  padding: 1rem;
+  width: 100%;
+}

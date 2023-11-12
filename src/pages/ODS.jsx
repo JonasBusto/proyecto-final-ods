@@ -89,6 +89,7 @@ const ODS = () => {
       </div>
       <div className="row m-0">
         <ODScard
+          mostrarProgreso={true}
           color={
             (Number(odsObjeto.progreso) >= 0 &&
               Number(odsObjeto.progreso) <= 33 &&

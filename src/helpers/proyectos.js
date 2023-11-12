@@ -64,6 +64,19 @@ let proyectos = [
       },
     ],
   },
+  {
+    id: 6,
+    nombre: "Proyecto 6",
+    desc: "Descripción del proyecto 6",
+    custom_fields: [
+      {
+        id: 60,
+        name: "Objetivo",
+        multiple: true,
+        value: [1, 3],
+      },
+    ],
+  },
 ];
 
 export default proyectos;

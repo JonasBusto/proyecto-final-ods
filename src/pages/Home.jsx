@@ -15,6 +15,7 @@ const Home = () => {
       <div className="row m-0">
         {ods.map((o) => (
           <ODScard
+            mostrarProgreso={true}
             key={o.id}
             o={o}
             cols={"col-6 col-md-4 col-lg-2"}
