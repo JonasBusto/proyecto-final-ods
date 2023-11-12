@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ods from "../helpers/ods";
 import "../styles/ods.css";
@@ -19,6 +19,24 @@ const ODS = () => {
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
   });
   const colores = ["red", "yellow", "green", "#16FF00"];
+  const [objetivosArray, setObjetivosArray] = useState([]);
+
+  const buscarObjetivosYods = (proyecto) => {
+    let arrayAux = [];
+
+    for (let i = 0; i < proyecto.custom_fields[0].value.length; i++) {
+      for (let j = 0; j < objetivos.length; j++) {
+        if (proyecto.custom_fields[0].value[i] == objetivos[j].id) {
+          arrayAux.push(objetivos[j]);
+          break;
+        }
+      }
+    }
+
+    setObjetivosArray([...arrayAux]);
+
+    return objetivosArray;
+  };
 
   const accion = (proyecto_ods) => {
     const [show, setShow] = useState(false);
@@ -35,7 +53,14 @@ const ODS = () => {
       <div>
         <div className="btn-acciones">
           <button onClick={handleShow}>Detalle</button>
-          <button onClick={handleShow2}>Objetivos</button>
+          <button
+            onClick={() => {
+              handleShow2();
+              buscarObjetivosYods(proyecto_ods);
+            }}
+          >
+            Objetivos
+          </button>
         </div>
         <Modal className="modal-custom-accion" show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -44,10 +69,14 @@ const ODS = () => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur
-            obcaecati laudantium, rerum perspiciatis inventore laboriosam
-            ducimus quae eos adipisci ut, quis nemo nihil doloremque magnam,
-            optio sunt officiis odit possimus?
+            <p>
+              <b>Nombre del Proyecto: </b>
+              {proyecto_ods.nombre}
+            </p>
+            <p>
+              <b>Descripción del Proyecto: </b>
+              {proyecto_ods.desc}
+            </p>
           </Modal.Body>
           <Modal.Footer>
             <div className="btn-acciones">
@@ -67,10 +96,17 @@ const ODS = () => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur
-            obcaecati laudantium, rerum perspiciatis inventore laboriosam
-            ducimus quae eos adipisci ut, quis nemo nihil doloremque magnam,
-            optio sunt officiis odit possimus?
+            <h5>Objetivos: </h5>
+            <ul>
+              {objetivosArray.map((o) => (
+                <li key={o.id}>
+                  {o.asunto}
+                  <p style={{ marginLeft: "1.2rem" }}>
+                    <b>{o.realizado + "%"}</b>
+                  </p>
+                </li>
+              ))}
+            </ul>
           </Modal.Body>
           <Modal.Footer>
             <div className="btn-acciones">
