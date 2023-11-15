@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div style={{ marginBottom: "3rem" }}>
       <div className="titulo" style={{ marginTop: "4rem" }}>
-        <p>Progreso en ODS de la STD</p>
+        <p>Progreso de cumplimiento de los ODS</p>
       </div>
       <div className="row m-0">
         {ods.map((o) => (
