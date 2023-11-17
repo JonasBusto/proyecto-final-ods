@@ -122,6 +122,18 @@ const Proyectos = () => {
       }
     }
 
+    function compare(obj1, obj2) {
+      if (obj1.id > obj2.id) {
+        return 1;
+      } else if (obj1.id < obj2.id) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+
+    auxArray.sort(compare);
+
     return (
       <div className="d-flex contain-img-table-p-j">
         {auxArray.map((o) => (
@@ -184,6 +196,18 @@ const Proyectos = () => {
     arrayAux = arrayAux.filter((o) =>
       hash[o.id] ? false : (hash[o.id] = true)
     );
+
+    function compare(obj1, obj2) {
+      if (obj1.id > obj2.id) {
+        return 1;
+      } else if (obj1.id < obj2.id) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+
+    arrayAux.sort(compare);
 
     setOdsArray([...arrayAux]);
   }, [objetivosArray]);

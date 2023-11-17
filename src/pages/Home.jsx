@@ -5,7 +5,12 @@ import ODScard from "../components/ODScard";
 import "../styles/home.css";
 
 const Home = () => {
-  const colores = ["red", "yellow", "green", "#16FF00"];
+  const colores = [
+    "rgba(218, 10, 10, 0.795)",
+    "rgba(236, 195, 13, 0.795)",
+    "rgba(54, 145, 54, 0.795)",
+    "rgba(10, 218, 62, 0.795)",
+  ];
 
   return (
     <div style={{ marginBottom: "3rem" }}>

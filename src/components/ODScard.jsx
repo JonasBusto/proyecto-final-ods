@@ -10,7 +10,13 @@ const ODScard = ({ o, color, cols, style, mostrarProgreso }) => {
               <p>{o.progreso}%</p>
             </div>
           )}
-          <img className="img-fluid" src={o.imagen} alt="" />
+          <img
+            className={
+              "img-fluid" + (o.progreso == 0 ? " filtro-sin-porc" : "")
+            }
+            src={o.imagen}
+            alt=""
+          />
         </div>
         {mostrarProgreso && (
           <div className="ods-progreso">
