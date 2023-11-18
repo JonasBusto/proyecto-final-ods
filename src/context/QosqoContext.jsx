@@ -12,6 +12,7 @@ export function QosqoProvider({ children }) {
   const [odsSelect, setOdsSelect] = useState(null);
   const [porcentajeODS, setPorcentajeODS] = useState(0);
   const [porcentajesODS, setPorcentajesODS] = useState([]);
+  const [cantObjPorODS, setCantObjPorODS] = useState([]);
 
   const buscarProyecto = (id) => {
     let arrayAux = odsQosqo.filter((p) => p.project.id == id);
@@ -40,6 +41,7 @@ export function QosqoProvider({ children }) {
                   ods_asociado: ods[k].nombre,
                   objetivo: odsQosqo[i],
                 });
+                break;
               }
             }
           }
@@ -125,6 +127,40 @@ export function QosqoProvider({ children }) {
     setProyectosDetalle([...arrayAuxPD]);
   };
 
+  const calcularOdsPorObjetivo = (ods) => {
+    let arrayAux = [];
+
+    for (let k = 0; k < ods.length; k++) {
+      let cont = 0;
+      for (let i = 0; i < odsQosqo.length; i++) {
+        for (let m = 0; m < odsQosqo[i].custom_fields?.length; m++) {
+          if (odsQosqo[i].custom_fields[m].name == "ODS") {
+            for (
+              let j = 0;
+              j < odsQosqo[i].custom_fields[m].value.length;
+              j++
+            ) {
+              if (
+                odsQosqo[i].custom_fields[m].value[j]
+                  .toLowerCase()
+                  .includes(ods[k].nombre.toLowerCase())
+              ) {
+                cont++;
+              }
+            }
+          }
+        }
+      }
+      arrayAux.push({
+        id: ods[k].id,
+        ods_asociado: ods[k].nombre,
+        cant_objetivos: cont,
+      });
+    }
+
+    setCantObjPorODS([...arrayAux]);
+  };
+
   useEffect(() => {
     fetch("https://proyecto-final-ods-backend.vercel.app/ods")
       .then((resultado) => resultado.json())
@@ -133,6 +169,7 @@ export function QosqoProvider({ children }) {
 
   useEffect(() => {
     calcularPorcentajesODS(ods);
+    calcularOdsPorObjetivo(ods);
     let arrayAuxP = [];
 
     for (let i = 0; i < odsQosqo.length; i++) {
@@ -172,6 +209,7 @@ export function QosqoProvider({ children }) {
         porcentajesODS,
         proyectosDetalle,
         odsQosqo,
+        cantObjPorODS,
       }}
     >
       {children}

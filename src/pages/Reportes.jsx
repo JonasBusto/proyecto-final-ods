@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import QosqoContext from "../context/QosqoContext";
 import { Chart } from "primereact/chart";
 import ods from "../helpers/ods";
 import objetivos from "../helpers/objetivos";
@@ -6,6 +7,12 @@ import proyectos from "../helpers/proyectos";
 import "../styles/reportes.css";
 
 const Reportes = () => {
+  const { porcentajesODS, cantObjPorODS, odsQosqo } = useContext(QosqoContext);
+
+  let arrayObjetivos = odsQosqo.filter(
+    (o) => o.subject != 0 && o.project.id != 627
+  );
+
   const arrayData = [540, 325, 702, 620];
   const [filtrarPor, setFiltrarPor] = useState("");
 
@@ -63,7 +70,7 @@ const Reportes = () => {
               <option value="">Todos</option>
               <option value="ods">ODS</option>
               <option value="objetivos">Objetivos</option>
-              <option value="proyectos">Proyectos</option>
+              {/* <option value="proyectos">Proyectos</option> */}
             </select>
           </div>
         </div>
@@ -73,12 +80,12 @@ const Reportes = () => {
               <Chart
                 type="bar"
                 data={{
-                  labels: ods.map((o) => o.nombre),
+                  labels: porcentajesODS.map((o) => o.ods_asociado),
                   datasets: [
                     {
                       label: "Porcentaje cumplido de ODS [%]",
-                      data: ods.map((o) => o.progreso),
-                      backgroundColor: generarColores(arrayData),
+                      data: porcentajesODS.map((o) => o.progreso),
+                      backgroundColor: generarColores(porcentajesODS),
                     },
                   ],
                 }}
@@ -94,11 +101,11 @@ const Reportes = () => {
               <Chart
                 type="doughnut"
                 data={{
-                  labels: objetivos.map((o) => o.asunto),
+                  labels: arrayObjetivos.map((o) => o.subject),
                   datasets: [
                     {
                       label: "Porcentaje cumplido del Objetivo [%]",
-                      data: objetivos.map((o) => o.realizado),
+                      data: arrayObjetivos.map((o) => o.done_ratio),
                       backgroundColor: generarColores(arrayData),
                     },
                   ],
@@ -110,7 +117,7 @@ const Reportes = () => {
               />
             </div>
           )}
-          {(filtrarPor === "" || filtrarPor === "proyectos") && (
+          {/* {(filtrarPor === "" || filtrarPor === "proyectos") && (
             <div className="col-12 col-md-6">
               <Chart
                 type="pie"
@@ -132,20 +139,18 @@ const Reportes = () => {
                 }}
               />
             </div>
-          )}
+          )} */}
           {(filtrarPor === "" || filtrarPor === "objetivos") && (
             <div className="col-12 col-md-6">
               <Chart
                 type="polarArea"
                 data={{
-                  labels: objetivos.map((o) => o.asunto),
+                  labels: cantObjPorODS.map((o) => o.ods_asociado),
                   datasets: [
                     {
-                      label: "ODS por Objetivos",
-                      data: objetivos.map(
-                        (o) => o.custom_fields[0].value.length
-                      ),
-                      backgroundColor: generarColores(arrayData),
+                      label: "Objetivos por ODS",
+                      data: cantObjPorODS.map((o) => o.cant_objetivos),
+                      backgroundColor: generarColores(cantObjPorODS),
                     },
                   ],
                 }}
@@ -161,12 +166,12 @@ const Reportes = () => {
               <Chart
                 type="line"
                 data={{
-                  labels: ods.map((o) => o.nombre),
+                  labels: porcentajesODS.map((o) => o.ods_asociado),
                   datasets: [
                     {
                       label: "Porcentaje cumplido de ODS",
-                      data: ods.map((o) => o.progreso),
-                      backgroundColor: generarColores(arrayData),
+                      data: porcentajesODS.map((o) => o.progreso),
+                      backgroundColor: generarColores(porcentajesODS),
                     },
                   ],
                 }}
@@ -182,12 +187,12 @@ const Reportes = () => {
               <Chart
                 type="radar"
                 data={{
-                  labels: ods.map((o) => o.nombre),
+                  labels: porcentajesODS.map((o) => o.ods_asociado),
                   datasets: [
                     {
                       label: "Porcentaje cumplido de ODS",
-                      data: ods.map((o) => o.progreso),
-                      backgroundColor: generarColores(arrayData),
+                      data: porcentajesODS.map((o) => o.progreso),
+                      backgroundColor: generarColores(porcentajesODS),
                     },
                   ],
                 }}
