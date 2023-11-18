@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../styles/proyectos.css";
+import QosqoContext from "../context/QosqoContext";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { FilterMatchMode } from "primereact/api";
@@ -11,6 +12,8 @@ import ODScard from "../components/ODScard";
 import Modal from "react-bootstrap/Modal";
 
 const Proyectos = () => {
+  const { buscarProyecto, arrayProyectos } = useContext(QosqoContext);
+
   const [filters, setFilters] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
   });
@@ -28,39 +31,35 @@ const Proyectos = () => {
   const [metaKey, setMetaKey] = useState(true);
 
   const mostrarInfoProyecto = (proyecto) => {
-    buscarObjetivosYods(proyecto);
+    let arrayObjAux = buscarProyecto(proyecto.id);
+    buscarObjetivosYods(arrayObjAux);
   };
 
   const colores = ["red", "yellow", "green", "#16FF00"];
 
   const buscarObjetivosYods = (proyecto) => {
-    let arrayAux = [];
-
-    for (let i = 0; i < proyecto.custom_fields[0].value.length; i++) {
-      for (let j = 0; j < objetivos.length; j++) {
-        if (proyecto.custom_fields[0].value[i] == objetivos[j].id) {
-          arrayAux.push(objetivos[j]);
-          break;
-        }
-      }
-    }
-
-    setProyectoSeleccionado({ ...proyecto });
-    setObjetivosArray([...arrayAux]);
+    setProyectoSeleccionado({ ...proyecto[0].project });
+    setObjetivosArray([...proyecto]);
 
     return objetivosArray;
   };
 
   const nombreProyecto = (proyecto) => {
-    return (
-      <span onClick={() => mostrarInfoProyecto(proyecto)}>
-        {proyecto.nombre}
-      </span>
-    );
+    if (proyecto.id !== 627) {
+      return (
+        <span onClick={() => mostrarInfoProyecto(proyecto)}>
+          {proyecto.name}
+        </span>
+      );
+    }
+  };
+
+  const progresoObjetivo = (objetivo) => {
+    return <span>{objetivo.done_ratio + "%"}</span>;
   };
 
   const nombreProyectoField = (proyecto) => {
-    return proyecto.nombre;
+    return proyecto.name;
   };
 
   const accion = (objetivo) => {
@@ -72,7 +71,7 @@ const Proyectos = () => {
     return (
       <div>
         <span className="color-obj-modal" onClick={handleShow}>
-          {objetivo.asunto} <i className="fa-solid fa-share"></i>
+          {objetivo.subject} <i className="fa-solid fa-share"></i>
         </span>
         <Modal
           className="modal-custom-accion modal-objetivo-proyecto"
@@ -84,18 +83,20 @@ const Proyectos = () => {
           </Modal.Header>
           <Modal.Body>
             <p>
-              <b>Objetivo:</b> {objetivo.asunto}
+              <b>Objetivo:</b> {objetivo.subject}
             </p>
             <p>
-              <b>Progreso actual:</b> {objetivo.realizado + "%"}
+              <b>Progreso actual:</b> {objetivo.done_ratio + "%"}
             </p>
             <p>
               <b>ODS asociados:</b>{" "}
             </p>
             <ul>
-              {objetivo.custom_fields[0].value.map((o, i) => (
-                <li key={i}>{o}</li>
-              ))}
+              {objetivo.custom_fields.map(
+                (o) =>
+                  o.name == "ODS" &&
+                  o.value.map((v) => <li key={Math.random() * 100}>{v}</li>)
+              )}
             </ul>
           </Modal.Body>
           <Modal.Footer>
@@ -111,16 +112,26 @@ const Proyectos = () => {
   const buscarOdsPorObjetivo = (objetivo) => {
     let auxArray = [];
 
-    for (let i = 0; i < objetivo.custom_fields[0].value.length; i++) {
-      for (let j = 0; j < ods.length; j++) {
-        if (
-          ods[j].nombre.toLowerCase() ==
-          objetivo.custom_fields[0].value[i].toLowerCase()
-        ) {
-          auxArray.push(ods[j]);
+    for (let i = 0; i < objetivo.custom_fields.length; i++) {
+      if (objetivo.custom_fields[i].name == "ODS") {
+        for (let k = 0; k < objetivo.custom_fields[i].value.length; k++) {
+          for (let j = 0; j < ods.length; j++) {
+            if (
+              objetivo.custom_fields[i].value[k]
+                .toLowerCase()
+                .includes(ods[j].nombre.toLowerCase())
+            ) {
+              auxArray.push(ods[j]);
+            }
+          }
         }
       }
     }
+
+    let hash = {};
+    auxArray = auxArray.filter((o) =>
+      hash[o.id] ? false : (hash[o.id] = true)
+    );
 
     function compare(obj1, obj2) {
       if (obj1.id > obj2.id) {
@@ -164,7 +175,7 @@ const Proyectos = () => {
   };
 
   const nombreField = (objetivo) => {
-    return objetivo.asunto;
+    return objetivo.subject;
   };
 
   const progresoTable = (objetivo) => {
@@ -174,19 +185,26 @@ const Proyectos = () => {
   useEffect(() => {
     let arrayAux = [];
 
-    for (let i = 0; i < objetivosArray.length; i++) {
-      for (
-        let j = 0;
-        j < objetivosArray[i].custom_fields[0].value.length;
-        j++
-      ) {
-        for (let k = 0; k < ods.length; k++) {
-          if (
-            ods[k].nombre.toLowerCase() ==
-            objetivosArray[i].custom_fields[0].value[j].toLowerCase()
+    let arrayAuxObj = [...objetivosArray];
+
+    for (let i = 0; i < arrayAuxObj.length; i++) {
+      for (let m = 0; m < arrayAuxObj[i].custom_fields.length; m++) {
+        if (arrayAuxObj[i].custom_fields[m].name == "ODS") {
+          for (
+            let j = 0;
+            j < arrayAuxObj[i].custom_fields[m].value.length;
+            j++
           ) {
-            arrayAux.push(ods[k]);
-            break;
+            for (let k = 0; k < ods.length; k++) {
+              if (
+                arrayAuxObj[i].custom_fields[m].value[j]
+                  .toLowerCase()
+                  .includes(ods[k].nombre.toLowerCase())
+              ) {
+                arrayAux.push(ods[k]);
+                break;
+              }
+            }
           }
         }
       }
@@ -247,7 +265,7 @@ const Proyectos = () => {
               rows={5}
               emptyMessage="Sin resultados"
               // rowsPerPageOptions={[5, 10, 25, 50]}
-              value={proyectos}
+              value={arrayProyectos}
             >
               <Column
                 body={nombreProyecto}
@@ -268,7 +286,7 @@ const Proyectos = () => {
             <div className="titulo-proyecto-selec">
               <p>
                 {proyectoSeleccionado
-                  ? proyectoSeleccionado.nombre
+                  ? proyectoSeleccionado.name
                   : "Sin proyecto seleccionado"}
               </p>
             </div>
@@ -341,8 +359,9 @@ const Proyectos = () => {
                           style={{ minWidth: "250px" }}
                         ></Column>
                         <Column
-                          field={progresoTable}
+                          // field={progresoTable}
                           header="Progreso"
+                          body={progresoObjetivo}
                           style={{ minWidth: "100px" }}
                         ></Column>
                       </DataTable>

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import QosqoContext from "../context/QosqoContext";
 import { useParams } from "react-router-dom";
 import ods from "../helpers/ods";
 import "../styles/ods.css";
@@ -13,6 +14,15 @@ import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 
 const ODS = () => {
+  const {
+    odsQosqo,
+    setOdsSelect,
+    buscarProObj,
+    proyectosDetalle,
+    listaProyectos,
+    porcentajeODS,
+  } = useContext(QosqoContext);
+
   const { id } = useParams();
   const odsObjeto = ods.filter((o) => o.id == id)[0];
   const [filters, setFilters] = useState({
@@ -23,7 +33,7 @@ const ODS = () => {
 
   const buscarObjetivosYods = (proyecto) => {
     let arrayAux = [];
-
+    console.log(proyecto);
     for (let i = 0; i < proyecto.custom_fields[0].value.length; i++) {
       for (let j = 0; j < objetivos.length; j++) {
         if (proyecto.custom_fields[0].value[i] == objetivos[j].id) {
@@ -39,6 +49,15 @@ const ODS = () => {
   };
 
   const accion = (proyecto_ods) => {
+    let arrayAuxFiltrado = [...proyectosDetalle];
+
+    arrayAuxFiltrado = arrayAuxFiltrado.filter(
+      (p) => p.project.name == proyecto_ods.name
+    );
+
+    // console.log("accion:", arrayAuxFiltrado);
+    // console.log("proyecto:", proyecto_ods);
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -56,7 +75,7 @@ const ODS = () => {
           <button
             onClick={() => {
               handleShow2();
-              buscarObjetivosYods(proyecto_ods);
+              // buscarObjetivosYods(proyecto_ods);
             }}
           >
             Objetivos
@@ -71,11 +90,11 @@ const ODS = () => {
           <Modal.Body>
             <p>
               <b>Nombre del Proyecto: </b>
-              {proyecto_ods.nombre}
+              {proyecto_ods.name}
             </p>
             <p>
               <b>Descripción del Proyecto: </b>
-              {proyecto_ods.desc}
+              {/* {proyecto_ods.desc} */}
             </p>
           </Modal.Body>
           <Modal.Footer>
@@ -98,11 +117,11 @@ const ODS = () => {
           <Modal.Body>
             <h5>Objetivos: </h5>
             <ul>
-              {objetivosArray.map((o) => (
+              {arrayAuxFiltrado.map((o) => (
                 <li key={o.id}>
-                  {o.asunto}
+                  {o.subject}
                   <p style={{ marginLeft: "1.2rem" }}>
-                    <b>{o.realizado + "%"}</b>
+                    <b>{o.done_ratio + "%"}</b>
                   </p>
                 </li>
               ))}
@@ -117,6 +136,10 @@ const ODS = () => {
       </div>
     );
   };
+
+  useEffect(() => {
+    setOdsSelect(odsObjeto);
+  }, []);
 
   return (
     <div style={{ marginBottom: "3rem" }}>
@@ -139,6 +162,7 @@ const ODS = () => {
             (Number(odsObjeto.progreso) == 100 && colores[3])
           }
           o={odsObjeto}
+          porcentajeODS={porcentajeODS}
           cols={"col-10 col-md-4"}
           style={{ margin: "0 auto" }}
         />
@@ -167,10 +191,10 @@ const ODS = () => {
               rows={5}
               emptyMessage="Sin resultados"
               rowsPerPageOptions={[5, 10, 25, 50]}
-              value={proyectos}
+              value={listaProyectos}
             >
               <Column
-                field="nombre"
+                field="name"
                 header="Proyecto"
                 style={{ minWidth: "250px" }}
               ></Column>

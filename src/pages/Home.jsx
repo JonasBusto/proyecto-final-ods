@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import QosqoContext from "../context/QosqoContext";
 import ods from "../helpers/ods";
 
 import ODScard from "../components/ODScard";
 import "../styles/home.css";
 
 const Home = () => {
+  const { porcentajesODS } = useContext(QosqoContext);
+
   const colores = [
     "rgba(218, 10, 10, 0.795)",
     "rgba(236, 195, 13, 0.795)",
@@ -23,6 +26,9 @@ const Home = () => {
             mostrarProgreso={true}
             key={o.id}
             o={o}
+            porcentajeODS={
+              porcentajesODS.filter((p) => p.id == o.id)[0]?.progreso
+            }
             cols={"col-6 col-md-4 col-lg-2"}
             color={
               (Number(o.progreso) >= 0 &&
