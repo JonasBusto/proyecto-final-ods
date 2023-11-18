@@ -49,7 +49,7 @@ let ods = [
   },
   {
     id: 7,
-    nombre: "Energía Asequible y no Contaminable",
+    nombre: "Energía Asequible y no Contaminante",
     imagen:
       "https://res.cloudinary.com/dtccrvpzp/image/upload/v1699794522/Proyecto%20Final/assets/okcznwrcjnf8hgjwqem9.jpg",
     progreso: "0",
@@ -129,7 +129,7 @@ let ods = [
   },
   {
     id: 17,
-    nombre: "Alianzas para los Objetivos",
+    nombre: "Alianzas para Lograr los Objetivos",
     imagen:
       "https://res.cloudinary.com/dtccrvpzp/image/upload/v1699794526/Proyecto%20Final/assets/iiyh6wffdm645sgk1x9b.png",
     progreso: "100",
