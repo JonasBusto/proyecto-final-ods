@@ -1,6 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const ODScard = ({ o, color, porcentajeODS, cols, style, mostrarProgreso }) => {
+const ODScard = ({
+  o,
+  color,
+  objetivosAsociados,
+  porcentajeODS,
+  cols,
+  style,
+  mostrarProgreso,
+}) => {
   return (
     <div className={cols + " d-flex flex-column ods-contain"} style={style}>
       <Link style={{ margin: "0.4rem", marginTop: "1rem" }} to={"/ods/" + o.id}>

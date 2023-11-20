@@ -6,7 +6,7 @@ import ODScard from "../components/ODScard";
 import "../styles/home.css";
 
 const Home = () => {
-  const { porcentajesODS } = useContext(QosqoContext);
+  const { porcentajesODS, cantObjPorODS } = useContext(QosqoContext);
 
   const colores = [
     "rgba(218, 10, 10, 0.795)",
@@ -26,6 +26,9 @@ const Home = () => {
             mostrarProgreso={true}
             key={o.id}
             o={o}
+            objetivosAsociados={
+              cantObjPorODS.filter((p) => p.id == o.id)[0]?.objetivos_asociados
+            }
             porcentajeODS={
               porcentajesODS.filter((p) => p.id == o.id)[0]?.progreso
             }

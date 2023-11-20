@@ -132,6 +132,7 @@ export function QosqoProvider({ children }) {
 
     for (let k = 0; k < ods.length; k++) {
       let cont = 0;
+      let objAsociados = [];
       for (let i = 0; i < odsQosqo.length; i++) {
         for (let m = 0; m < odsQosqo[i].custom_fields?.length; m++) {
           if (odsQosqo[i].custom_fields[m].name == "ODS") {
@@ -145,6 +146,7 @@ export function QosqoProvider({ children }) {
                   .toLowerCase()
                   .includes(ods[k].nombre.toLowerCase())
               ) {
+                objAsociados.push(odsQosqo[i].subject);
                 cont++;
               }
             }
@@ -155,6 +157,7 @@ export function QosqoProvider({ children }) {
         id: ods[k].id,
         ods_asociado: ods[k].nombre,
         cant_objetivos: cont,
+        objetivos_asociados: objAsociados,
       });
     }
 
