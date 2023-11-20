@@ -38,8 +38,19 @@ const Proyectos = () => {
   const colores = ["red", "yellow", "green", "#16FF00"];
 
   const buscarObjetivosYods = (proyecto) => {
+    let arrayAux = [];
+
+    for (let j = 0; j < proyecto.length; j++) {
+      for (let i = 0; i < proyecto[j]?.custom_fields.length; i++) {
+        if (proyecto[j].custom_fields[i].id != 34) {
+          arrayAux.push(proyecto[j]);
+        }
+        break;
+      }
+    }
+
     setProyectoSeleccionado({ ...proyecto[0].project });
-    setObjetivosArray([...proyecto]);
+    setObjetivosArray([...arrayAux]);
 
     return objetivosArray;
   };
