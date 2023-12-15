@@ -9,7 +9,7 @@ const Footer = () => {
         <div style={{ width: "100%", maxWidth: "1300px", margin: "0 auto" }}>
           <img
             className="img-fluid"
-            src="https://res.cloudinary.com/dtccrvpzp/image/upload/v1699624470/Proyecto%20Final/e9yrg22sdlovphzw1gql.png"
+            src="https://drive.google.com/uc?export=view&id=1nQeeJoexyqVUleNIJ1bFWyh7bsDSg134"
             alt="logo_footer"
           />
         </div>
@@ -92,7 +92,7 @@ const Footer = () => {
                 <Link to="/">
                   <img
                     className="img-fluid"
-                    src="https://knauf-industries.es/wp-content/uploads/CABECERA-CIRCULO-ODS-1200x1200.jpg"
+                    src="https://green-cycles.com/wp-content/uploads/2021/04/ODS-ci%CC%81rculo.png"
                     alt="footer_logo_info"
                   />
                 </Link>

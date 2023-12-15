@@ -11,7 +11,7 @@ const Header = () => {
           <Link to="/">
             <img
               className="img-fluid"
-              src="https://knauf-industries.es/wp-content/uploads/CABECERA-CIRCULO-ODS-1200x1200.jpg"
+              src="https://green-cycles.com/wp-content/uploads/2021/04/ODS-ci%CC%81rculo.png"
               alt="logo_inicio_nav"
             />
           </Link>
