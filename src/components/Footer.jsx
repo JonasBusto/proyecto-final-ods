@@ -9,7 +9,7 @@ const Footer = () => {
         <div style={{ width: "100%", maxWidth: "1300px", margin: "0 auto" }}>
           <img
             className="img-fluid"
-            src="https://drive.google.com/uc?export=view&id=1nQeeJoexyqVUleNIJ1bFWyh7bsDSg134"
+            src="https://i.imgur.com/LBTYbdn.png"
             alt="logo_footer"
           />
         </div>
