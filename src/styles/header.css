@@ -1,5 +1,5 @@
 header > .nav-custom-div {
-  background-color: rgb(141, 113, 183);
+  background-color: #252525;
   /* background-color: #435585; */
   /* background-color: rgb(0, 40, 65); */
 }
@@ -33,6 +33,18 @@ header > .nav-custom-div {
   font-weight: 700;
 }
 
+.navbar-toggler {
+  background-color: white !important;
+}
+
+.navbar-collapse > a:focus {
+  color: white;
+}
+
+.navbar-collapse > a:hover {
+  color: #ff4713;
+}
+
 .header-main p {
   text-align: center;
   font-size: 3rem;
@@ -46,9 +58,9 @@ header > .nav-custom-div {
 }
 
 .header-main {
-  background-color: rgb(63, 47, 89);
+  background-color: #121212;
   margin: 0 !important;
-  padding: 1rem;
+  padding: 0.8rem 0;
 }
 
 .first-nav > a {
@@ -58,15 +70,14 @@ header > .nav-custom-div {
 }
 
 .first-nav > a:first-child {
-  width: 15vw;
-  height: 7rem;
-  max-width: 7rem;
+  width: 30vw;
+  /* height: 7rem; */
+  max-width: 20rem;
 }
 
 .first-nav > a:last-child {
   width: 30vw;
-  height: 7rem;
-  max-width: 12rem;
+  max-width: 15rem;
 }
 
 .first-nav > a:last-child > img {
@@ -76,11 +87,10 @@ header > .nav-custom-div {
 
 .first-nav > a:first-child > img {
   transition: 1s all ease-in-out;
-  width: 10rem;
-  height: 6rem;
-  object-fit: cover;
+  width: 20vw;
+  object-fit: contain;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 }
 
 .first-nav > a > img:hover {

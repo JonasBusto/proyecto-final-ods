@@ -1,5 +1,5 @@
-import { useState, useEffect, createContext } from "react";
-import ods from "../helpers/ods";
+import { useState, useEffect, createContext } from 'react';
+import ods from '../helpers/ods';
 
 const QosqoContext = createContext();
 
@@ -25,7 +25,7 @@ export function QosqoProvider({ children }) {
 
     for (let i = 0; i < odsQosqo.length; i++) {
       for (let m = 0; m < odsQosqo[i].custom_fields?.length; m++) {
-        if (odsQosqo[i].custom_fields[m].name == "ODS") {
+        if (odsQosqo[i].custom_fields[m].name == 'ODS') {
           for (let k = 0; k < ods.length; k++) {
             for (
               let j = 0;
@@ -102,7 +102,7 @@ export function QosqoProvider({ children }) {
 
     for (let i = 0; i < odsQosqo.length; i++) {
       for (let j = 0; j < odsQosqo[i].custom_fields?.length; j++) {
-        if (odsQosqo[i].custom_fields[j].name == "ODS") {
+        if (odsQosqo[i].custom_fields[j].name == 'ODS') {
           for (let k = 0; k < odsQosqo[i].custom_fields[j].value.length; k++) {
             if (
               odsQosqo[i].custom_fields[j].value[k]
@@ -135,7 +135,7 @@ export function QosqoProvider({ children }) {
       let objAsociados = [];
       for (let i = 0; i < odsQosqo.length; i++) {
         for (let m = 0; m < odsQosqo[i].custom_fields?.length; m++) {
-          if (odsQosqo[i].custom_fields[m].name == "ODS") {
+          if (odsQosqo[i].custom_fields[m].name == 'ODS') {
             for (
               let j = 0;
               j < odsQosqo[i].custom_fields[m].value.length;
@@ -165,7 +165,7 @@ export function QosqoProvider({ children }) {
   };
 
   useEffect(() => {
-    fetch("https://proyecto-final-ods-backend.vercel.app/ods")
+    fetch('https://proyecto-final-ods-backend.vercel.app/ods')
       .then((resultado) => resultado.json())
       .then((data) => setOdsQosqo([...data.issues]));
   }, []);
@@ -194,10 +194,14 @@ export function QosqoProvider({ children }) {
     let auxSuma = 0;
 
     for (let i = 0; i < proyectosDetalle.length; i++) {
-      auxSuma += proyectosDetalle[i].done_ratio;
+      auxSuma += Number(proyectosDetalle[i].done_ratio);
     }
 
-    setPorcentajeODS(Math.floor(auxSuma / proyectosDetalle.length));
+    setPorcentajeODS(
+      proyectosDetalle.length === 0
+        ? 0
+        : Math.floor(auxSuma / proyectosDetalle.length)
+    );
   }, [proyectosDetalle]);
 
   return (

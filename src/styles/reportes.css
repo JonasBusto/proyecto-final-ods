@@ -23,7 +23,7 @@
   color: white;
   text-decoration: none;
   transition: 0.6s all ease-in-out;
-  background-color: #af2655;
+  /* background-color: #af2655; */
 }
 
 @media (max-width: 500px) {

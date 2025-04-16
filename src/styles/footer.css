@@ -6,23 +6,26 @@ footer > div {
 }
 
 footer > div:first-child {
-  background-color: rgb(50, 39, 71);
+  background-color: #121212;
+  border-bottom: 1px solid #ffffff2b;
 }
 
 footer > div:first-child img {
-  width: 35rem;
+  width: 15rem;
+  object-fit: contain;
   margin: 1rem 0;
   margin-left: 2rem;
   object-fit: cover;
 }
 
 .footer-info {
-  background-color: rgb(63, 47, 89);
+  background-color: #121212;
+  border-bottom: 1px solid #ffffff2b;
 }
 
 footer > div:last-child {
   height: 2.4rem;
-  background-color: rgb(50, 39, 71);
+  background-color: #252525;
 }
 
 footer p,
@@ -51,7 +54,7 @@ footer li {
 }
 
 .info-col-footer a {
-  color: #3cd1ef;
+  color: #ff4713;
   font-size: 1.1rem;
   text-decoration: none;
 }
@@ -72,20 +75,40 @@ footer li {
   display: flex;
   justify-self: center;
   align-items: center;
+  width: 100%;
 }
 
 .footer-img img {
   transition: 1s all ease-in-out;
-  width: 20%;
-  object-fit: cover;
-  width: 7.5rem;
-  height: 7.5rem;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 100%;
+  object-fit: contain;
+  margin-top: 2rem;
+}
+
+@media (min-width: 992px) {
+  .contacto-footer-a a {
+    font-size: auto;
+  }
 }
 
 @media (max-width: 991px) {
   .info-col-footer {
     min-height: 0 !important;
+  }
+
+  .contacto-footer-a a {
+    font-size: 2vw !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .contacto-footer-a a {
+    font-size: 4vw !important;
+  }
+}
+
+@media (max-width: 1250px) {
+  .contacto-footer-a a {
+    font-size: 1.4vw;
   }
 }

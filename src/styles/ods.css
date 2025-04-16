@@ -1,5 +1,5 @@
 .ods-contain-info > div {
-  background-color: #435585;
+  background-color: #252525;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -7,7 +7,7 @@
   background-color: #f5f5f5 !important;
 }
 
-.btn-acciones{
+.btn-acciones {
   display: flex;
 }
 

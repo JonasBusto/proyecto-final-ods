@@ -1,0 +1,14 @@
+.modal-custom-help img {
+  object-fit: contain;
+}
+
+.modal-custom-help .modal-header {
+  border: 0;
+  padding: 0px 45px;
+  padding-bottom: 0;
+}
+
+.modal-custom-help .modal-content {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

@@ -1,15 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
-import "../styles/proyectos.css";
-import QosqoContext from "../context/QosqoContext";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
-import { FilterMatchMode } from "primereact/api";
-import { InputText } from "primereact/inputtext";
-import proyectos from "../helpers/proyectos";
-import ods from "../helpers/ods";
-import objetivos from "../helpers/objetivos";
-import ODScard from "../components/ODScard";
-import Modal from "react-bootstrap/Modal";
+import React, { useState, useEffect, useContext } from 'react';
+import '../styles/proyectos.css';
+import QosqoContext from '../context/QosqoContext';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import { FilterMatchMode } from 'primereact/api';
+import { InputText } from 'primereact/inputtext';
+import proyectos from '../helpers/proyectos';
+import ods from '../helpers/ods';
+import objetivos from '../helpers/objetivos';
+import ODScard from '../components/ODScard';
+import Modal from 'react-bootstrap/Modal';
+import { HelpProjects } from '../components/modals/HelpProjects';
 
 const Proyectos = () => {
   const { buscarProyecto, arrayProyectos } = useContext(QosqoContext);
@@ -35,7 +36,7 @@ const Proyectos = () => {
     buscarObjetivosYods(arrayObjAux);
   };
 
-  const colores = ["red", "yellow", "green", "#16FF00"];
+  const colores = ['red', 'yellow', 'green', '#16FF00'];
 
   const buscarObjetivosYods = (proyecto) => {
     // id = 4 -> reunión
@@ -65,7 +66,7 @@ const Proyectos = () => {
   };
 
   const progresoObjetivo = (objetivo) => {
-    return <span>{objetivo.done_ratio + "%"}</span>;
+    return <span>{objetivo.done_ratio + '%'}</span>;
   };
 
   const nombreProyectoField = (proyecto) => {
@@ -80,37 +81,37 @@ const Proyectos = () => {
 
     return (
       <div>
-        <span className="color-obj-modal" onClick={handleShow}>
-          {objetivo.subject} <i className="fa-solid fa-share"></i>
+        <span className='color-obj-modal' onClick={handleShow}>
+          {objetivo.subject} <i className='fa-solid fa-share'></i>
         </span>
         <Modal
-          className="modal-custom-accion modal-objetivo-proyecto"
+          className='modal-custom-accion modal-objetivo-proyecto'
           show={show}
           onHide={handleClose}
         >
           <Modal.Header closeButton>
-            <Modal.Title>{"Detalle del objetivo"}</Modal.Title>
+            <Modal.Title>{'Detalle del objetivo'}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <p>
               <b>Objetivo:</b> {objetivo.subject}
             </p>
             <p>
-              <b>Progreso actual:</b> {objetivo.done_ratio + "%"}
+              <b>Progreso actual:</b> {objetivo.done_ratio + '%'}
             </p>
             <p>
-              <b>ODS asociados:</b>{" "}
+              <b>ODS asociados:</b>{' '}
             </p>
             <ul>
               {objetivo.custom_fields.map(
                 (o) =>
-                  o.name == "ODS" &&
+                  o.name == 'ODS' &&
                   o.value.map((v) => <li key={Math.random() * 100}>{v}</li>)
               )}
             </ul>
           </Modal.Body>
           <Modal.Footer>
-            <div className="btn-acciones">
+            <div className='btn-acciones'>
               <button onClick={handleClose}>Cerrar</button>
             </div>
           </Modal.Footer>
@@ -123,7 +124,7 @@ const Proyectos = () => {
     let auxArray = [];
 
     for (let i = 0; i < objetivo.custom_fields.length; i++) {
-      if (objetivo.custom_fields[i].name == "ODS") {
+      if (objetivo.custom_fields[i].name == 'ODS') {
         for (let k = 0; k < objetivo.custom_fields[i].value.length; k++) {
           for (let j = 0; j < ods.length; j++) {
             if (
@@ -156,7 +157,7 @@ const Proyectos = () => {
     auxArray.sort(compare);
 
     return (
-      <div className="d-flex contain-img-table-p-j">
+      <div className='d-flex contain-img-table-p-j'>
         {auxArray.map((o) => (
           <ODScard
             key={o.id}
@@ -174,8 +175,8 @@ const Proyectos = () => {
               (Number(o.progreso) == 100 && colores[3])
             }
             o={o}
-            cols={""}
-            style={{ margin: "0" }}
+            cols={''}
+            style={{ margin: '0' }}
           />
         ))}
       </div>
@@ -189,7 +190,7 @@ const Proyectos = () => {
   };
 
   const progresoTable = (objetivo) => {
-    return <span>{objetivo.realizado + "%"}</span>;
+    return <span>{objetivo.realizado + '%'}</span>;
   };
 
   useEffect(() => {
@@ -199,7 +200,7 @@ const Proyectos = () => {
 
     for (let i = 0; i < arrayAuxObj.length; i++) {
       for (let m = 0; m < arrayAuxObj[i].custom_fields.length; m++) {
-        if (arrayAuxObj[i].custom_fields[m].name == "ODS") {
+        if (arrayAuxObj[i].custom_fields[m].name == 'ODS') {
           for (
             let j = 0;
             j < arrayAuxObj[i].custom_fields[m].value.length;
@@ -241,16 +242,17 @@ const Proyectos = () => {
   }, [objetivosArray]);
 
   return (
-    <div className="main-proyectos" style={{ marginBottom: "3rem" }}>
-      <div className="titulo">
+    <div className='main-proyectos' style={{ marginBottom: '3rem' }}>
+      <HelpProjects />
+      <div className='titulo'>
         <p>Proyectos en Curso</p>
       </div>
-      <div className="row m-0">
-        <div className="col-12 col-lg-3 contain-proyectos ods-contain-info">
+      <div className='row m-0'>
+        <div className='col-12 col-lg-3 contain-proyectos ods-contain-info'>
           <div>
-            <div className="d-flex flex-column align-items-center justify-content-between p-3 w-100 contain-input-search">
+            <div className='d-flex flex-column align-items-center justify-content-between p-3 w-100 contain-input-search'>
               <InputText
-                placeholder="Buscar Proyecto"
+                placeholder='Buscar Proyecto'
                 onInput={(e) => {
                   setFilters({
                     global: {
@@ -262,26 +264,26 @@ const Proyectos = () => {
               />
             </div>
             <DataTable
-              className="datatable-custom datatable-proyectos"
+              className='datatable-custom datatable-proyectos'
               paginator
               removableSort
-              selectionMode="single"
+              selectionMode='single'
               selection={seleccionarProyecto}
               onSelectionChange={(e) => setSeleccionarProyecto(e.value)}
-              dataKey="id"
+              dataKey='id'
               metaKeySelection={metaKey}
               filters={filters}
               scrollable
               rows={5}
-              emptyMessage="Sin resultados"
+              emptyMessage='Sin resultados'
               // rowsPerPageOptions={[5, 10, 25, 50]}
               value={arrayProyectos}
             >
               <Column
                 body={nombreProyecto}
                 field={nombreProyectoField}
-                header="Nombre del Proyecto"
-                style={{ minWidth: "250px" }}
+                header='Nombre del Proyecto'
+                style={{ minWidth: '250px' }}
               ></Column>
               {/* <Column
                 header="Acción"
@@ -291,21 +293,21 @@ const Proyectos = () => {
             </DataTable>
           </div>
         </div>
-        <div className="col col-lg-9 contain-info-proyectos">
-          <div className="d-flex flex-column pb-3">
-            <div className="titulo-proyecto-selec">
+        <div className='col col-lg-9 contain-info-proyectos'>
+          <div className='d-flex flex-column pb-3'>
+            <div className='titulo-proyecto-selec'>
               <p>
                 {proyectoSeleccionado
                   ? proyectoSeleccionado.name
-                  : "Sin proyecto seleccionado"}
+                  : 'Sin proyecto seleccionado'}
               </p>
             </div>
             {objetivosArray.length !== 0 && (
               <div>
-                <div className="row m-0">
-                  <div className="col-12 col-lg-4 col-xxl-3 p-0">
-                    <div className="row m-0">
-                      <p className="p-titulo-p-j">ODS en los que Impacta:</p>
+                <div className='row m-0'>
+                  <div className='col-12 col-lg-4 col-xxl-3 p-0'>
+                    <div className='row m-0'>
+                      <p className='p-titulo-p-j'>ODS en los que Impacta:</p>
                       {odsArray.map((o) => (
                         <ODScard
                           key={o.id}
@@ -323,17 +325,17 @@ const Proyectos = () => {
                             (Number(o.progreso) == 100 && colores[3])
                           }
                           o={o}
-                          cols={"col-6"}
-                          style={{ margin: "0 auto" }}
+                          cols={'col-6'}
+                          style={{ margin: '0 auto' }}
                         />
                       ))}
                     </div>
                   </div>
-                  <div className="col-12 col-lg-8 col-xxl-9 ods-contain-info">
+                  <div className='col-12 col-lg-8 col-xxl-9 ods-contain-info'>
                     <div>
-                      <div className="d-flex flex-column align-items-center justify-content-between p-3 w-100 contain-input-search">
+                      <div className='d-flex flex-column align-items-center justify-content-between p-3 w-100 contain-input-search'>
                         <InputText
-                          placeholder="Buscar Objetivo del Proyecto"
+                          placeholder='Buscar Objetivo del Proyecto'
                           onInput={(e) => {
                             setFiltersObj({
                               global: {
@@ -345,34 +347,34 @@ const Proyectos = () => {
                         />
                       </div>
                       <DataTable
-                        className="datatable-custom"
+                        className='datatable-custom'
                         paginator
                         removableSort
-                        selectionMode="single"
+                        selectionMode='single'
                         filters={filtersObj}
                         scrollable
                         rows={5}
-                        emptyMessage="Sin resultados"
+                        emptyMessage='Sin resultados'
                         rowsPerPageOptions={[5, 10, 25, 50]}
                         value={objetivosArray}
                       >
                         <Column
                           field={nombreField}
-                          header="Objetivo"
+                          header='Objetivo'
                           body={accion}
-                          style={{ minWidth: "400px" }}
+                          style={{ minWidth: '400px' }}
                           // style={{ minWidth: "250px" }}
                         ></Column>
                         <Column
-                          header="ODS"
+                          header='ODS'
                           body={buscarOdsPorObjetivo}
-                          style={{ minWidth: "250px" }}
+                          style={{ minWidth: '250px' }}
                         ></Column>
                         <Column
                           // field={progresoTable}
-                          header="Progreso"
+                          header='Progreso'
                           body={progresoObjetivo}
-                          style={{ minWidth: "100px" }}
+                          style={{ minWidth: '100px' }}
                         ></Column>
                       </DataTable>
                     </div>

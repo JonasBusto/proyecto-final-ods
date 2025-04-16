@@ -1,9 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans&family=Roboto:wght@400;700&display=swap");
+/* @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans&family=Roboto:wght@400;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
-  background-color: rgb(240, 247, 255) !important;
+  background-color: #fff !important;
+  /* background-color: #f0f7ff !important; */
 }
 
 * {
   /* font-family: "Roboto Sans", cursive; */
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  font-style: normal;
 }
