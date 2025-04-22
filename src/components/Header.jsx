@@ -11,7 +11,7 @@ const Header = () => {
           <Link to='/'>
             <img
               className='img-fluid'
-              src='/logos/logo-footer.png'
+              src='/logo-footer.png'
               alt='logo_inicio_nav'
             />
           </Link>
