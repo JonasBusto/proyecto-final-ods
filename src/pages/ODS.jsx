@@ -166,7 +166,7 @@ const ODS = () => {
           cols={'col-10 col-md-4'}
           style={{ margin: '0 auto' }}
         />
-        <div className='col-12 col-lg-8 ods-contain-info'>
+        <div className='col-12 col-lg-8 ods-contain-info ods-table-fix'>
           <div>
             <div className='d-flex flex-column align-items-center justify-content-between p-3 w-100 contain-input-search'>
               <InputText

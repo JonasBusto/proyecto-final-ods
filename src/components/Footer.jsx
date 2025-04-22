@@ -7,7 +7,7 @@ const Footer = () => {
       <div className='d-flex justify-content-start'>
         <div style={{ width: '100%', maxWidth: '1300px', margin: '0 auto' }}>
           <img
-            className='img-fluid'
+            className='img-fluid !tw-w-[70vw] !tw-max-w-[40rem]'
             src='https://i.imgur.com/LBTYbdn.png'
             alt='logo_footer'
           />

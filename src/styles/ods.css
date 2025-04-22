@@ -11,6 +11,12 @@
   display: flex;
 }
 
+@media (width<= 991px) {
+  .ods-table-fix {
+    max-width: 100vw !important;
+  }
+}
+
 .btn-acciones > button {
   margin: 0.3rem;
   border: 0;

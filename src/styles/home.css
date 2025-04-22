@@ -5,6 +5,12 @@
   font-weight: 700;
 }
 
+@media (width <= 450px) {
+  .titulo p {
+    font-size: 9vw;
+  }
+}
+
 .ods-contain img {
   transition: 0.7s all ease-in-out;
   border-radius: 5px;
