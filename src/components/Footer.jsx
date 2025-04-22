@@ -84,7 +84,7 @@ const Footer = () => {
                 >
                   <img
                     className='img-fluid'
-                    src='logo-footer.png'
+                    src='/logo-footer.png'
                     alt='footer_logo_info'
                   />
                 </a>

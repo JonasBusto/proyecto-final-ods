@@ -11,14 +11,14 @@ const Header = () => {
           <Link to='/'>
             <img
               className='img-fluid'
-              src='logo-footer.png'
+              src='/logos/logo-footer.png'
               alt='logo_inicio_nav'
             />
           </Link>
           <a href='https://frt.utn.edu.ar/' target='_blank'>
             <img
               className='img-fluid'
-              src='logo-header-utn.png'
+              src='/logo-header-utn.png'
               alt='logo_nav_utn_frt'
             />
           </a>
