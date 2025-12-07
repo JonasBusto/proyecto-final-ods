@@ -181,8 +181,6 @@ const Proyectos = () => {
         ))}
       </div>
     );
-
-    console.log(auxArray);
   };
 
   const nombreField = (objetivo) => {

@@ -33,7 +33,6 @@ const ODS = () => {
 
   const buscarObjetivosYods = (proyecto) => {
     let arrayAux = [];
-    console.log(proyecto);
     for (let i = 0; i < proyecto.custom_fields[0].value.length; i++) {
       for (let j = 0; j < objetivos.length; j++) {
         if (proyecto.custom_fields[0].value[i] == objetivos[j].id) {

@@ -6,7 +6,8 @@ import { HelpHome } from '../components/modals/HelpHome';
 import '../styles/home.css';
 
 const Home = () => {
-  const { porcentajesODS, cantObjPorODS } = useContext(QosqoContext);
+  const { proyectosPorODS, porcentajesODS, cantObjPorODS } =
+    useContext(QosqoContext);
 
   const colores = [
     'rgba(218, 10, 10, 0.795)',
@@ -37,6 +38,10 @@ const Home = () => {
             <ODScard
               mostrarProgreso
               key={o.id}
+              mostrarProyectos={true}
+              proyectosAsociados={
+                proyectosPorODS.find((p) => p.id == o.id)?.proyectos || []
+              }
               o={o}
               objetivosAsociados={
                 cantObjPorODS.find((p) => p.id == o.id)?.objetivos_asociados
