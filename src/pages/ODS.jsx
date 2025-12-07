@@ -146,7 +146,7 @@ const ODS = () => {
                               ') ' +
                               (indicador?.subject || 'Indicador desconocido')}
                             <span style={{ marginLeft: '10px', color: 'red' }}>
-                              ({indicador.done_ratio + '% de 100%'})
+                              ({indicador.done_ratio + '%'})
                             </span>
                           </p>
                         ))}
