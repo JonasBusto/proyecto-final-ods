@@ -13,6 +13,8 @@ import { InputText } from 'primereact/inputtext';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 
+const letras = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
 const ODS = () => {
   const {
     odsQosqo,
@@ -125,8 +127,7 @@ const ODS = () => {
                           marginLeft: '2rem',
                         }}
                       >
-                        Este objetivo no tiene indicadores. Su progreso depende
-                        unicamente de él.
+                        Este objetivo no tiene indicadores.
                       </p>
                     ) : (
                       <div>
@@ -141,9 +142,8 @@ const ODS = () => {
                               marginLeft: '30px',
                             }}
                           >
-                            {index +
-                              1 +
-                              '. ' +
+                            {letras[index] +
+                              ') ' +
                               (indicador?.subject || 'Indicador desconocido')}
                             <span style={{ marginLeft: '10px', color: 'red' }}>
                               ({indicador.done_ratio + '% de 100%'})
