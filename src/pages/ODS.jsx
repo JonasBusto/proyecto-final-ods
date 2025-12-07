@@ -111,12 +111,48 @@ const ODS = () => {
           <Modal.Body>
             <h5>Objetivos: </h5>
             <ul>
-              {arrayAuxFiltrado.map((o) => (
-                <li key={o.id}>
-                  {o.subject}
-                  <p style={{ marginLeft: '1.2rem' }}>
-                    <b>{o.done_ratio + '%'}</b>
-                  </p>
+              {arrayAuxFiltrado.map((o, index) => (
+                <li key={o.id} style={{ marginBottom: '8px' }}>
+                  <div>
+                    <p style={{ margin: 0 }}>
+                      {index + 1}. {o.subject} <b>({o.done_ratio + '%'})</b>
+                    </p>
+                    {o.children.length === 0 ? (
+                      <p
+                        style={{
+                          color: 'gray',
+                          fontSize: '0.8rem',
+                          marginLeft: '2rem',
+                        }}
+                      >
+                        Este objetivo no tiene indicadores. Su progreso depende
+                        unicamente de él.
+                      </p>
+                    ) : (
+                      <div>
+                        {o.children.map((indicador, index) => (
+                          <p
+                            key={indicador.id}
+                            style={{
+                              color: '#0e28ab',
+                              fontWeight: 'bold',
+                              fontSize: '0.9rem',
+                              marginBottom: 0,
+                              marginLeft: '30px',
+                            }}
+                          >
+                            {index +
+                              1 +
+                              '. ' +
+                              (indicador?.subject || 'Indicador desconocido')}
+                            <span style={{ marginLeft: '10px', color: 'red' }}>
+                              ({indicador.done_ratio + '% de 100%'})
+                            </span>
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </li>
               ))}
             </ul>

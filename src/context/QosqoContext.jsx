@@ -122,8 +122,17 @@ export function QosqoProvider({ children }) {
       hash[o.id] ? false : (hash[o.id] = true)
     );
 
+    const arrayConHijos = arrayAuxPD.map((obj) => {
+      const hijos = odsQosqo.filter((item) => item.parent?.id === obj.id);
+
+      return {
+        ...obj,
+        children: hijos.length ? hijos : [],
+      };
+    });
+
     setListaProyectos([...arrayAuxP]);
-    setProyectosDetalle([...arrayAuxPD]);
+    setProyectosDetalle([...arrayConHijos]);
   };
 
   const calcularOdsPorObjetivo = (ods) => {
