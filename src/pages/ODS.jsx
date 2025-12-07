@@ -55,9 +55,6 @@ const ODS = () => {
       (p) => p.project.name == proyecto_ods.name
     );
 
-    // console.log("accion:", arrayAuxFiltrado);
-    // console.log("proyecto:", proyecto_ods);
-
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -75,7 +72,6 @@ const ODS = () => {
           <button
             onClick={() => {
               handleShow2();
-              // buscarObjetivosYods(proyecto_ods);
             }}
           >
             Objetivos
@@ -94,7 +90,6 @@ const ODS = () => {
             </p>
             <p>
               <b>Descripción del Proyecto: </b>
-              {/* {proyecto_ods.desc} */}
             </p>
           </Modal.Body>
           <Modal.Footer>
@@ -150,16 +145,16 @@ const ODS = () => {
         <ODScard
           mostrarProgreso={true}
           color={
-            (Number(odsObjeto.progreso) >= 0 &&
-              Number(odsObjeto.progreso) <= 33 &&
+            (Number(porcentajeODS) >= 0 &&
+              Number(porcentajeODS) <= 33 &&
               colores[0]) ||
-            (Number(odsObjeto.progreso) >= 34 &&
-              Number(odsObjeto.progreso) <= 66 &&
+            (Number(porcentajeODS) > 33 &&
+              Number(porcentajeODS) <= 66 &&
               colores[1]) ||
-            (Number(odsObjeto.progreso) >= 66 &&
-              Number(odsObjeto.progreso) <= 99 &&
+            (Number(porcentajeODS) > 66 &&
+              Number(porcentajeODS) < 100 &&
               colores[2]) ||
-            (Number(odsObjeto.progreso) == 100 && colores[3])
+            (Number(porcentajeODS) == 100 && colores[3])
           }
           o={odsObjeto}
           porcentajeODS={porcentajeODS}

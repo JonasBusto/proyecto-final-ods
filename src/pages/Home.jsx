@@ -22,32 +22,31 @@ const Home = () => {
         <p>Progreso de cumplimiento de los ODS</p>
       </div>
       <div className='row m-0'>
-        {ods.map((o) => (
-          <ODScard
-            mostrarProgreso={true}
-            key={o.id}
-            o={o}
-            objetivosAsociados={
-              cantObjPorODS.filter((p) => p.id == o.id)[0]?.objetivos_asociados
-            }
-            porcentajeODS={
-              porcentajesODS.filter((p) => p.id == o.id)[0]?.progreso
-            }
-            cols={'col-6 col-md-4 col-lg-2'}
-            color={
-              (Number(o.progreso) >= 0 &&
-                Number(o.progreso) <= 33 &&
-                colores[0]) ||
-              (Number(o.progreso) >= 34 &&
-                Number(o.progreso) <= 66 &&
-                colores[1]) ||
-              (Number(o.progreso) >= 66 &&
-                Number(o.progreso) <= 99 &&
-                colores[2]) ||
-              (Number(o.progreso) == 100 && colores[3])
-            }
-          />
-        ))}
+        {ods.map((o) => {
+          const progresoReal =
+            porcentajesODS.find((p) => p.id == o.id)?.progreso ?? 0;
+
+          const color =
+            (progresoReal >= 0 && progresoReal <= 33 && colores[0]) ||
+            (progresoReal > 33 && progresoReal <= 66 && colores[1]) ||
+            (progresoReal > 66 && progresoReal < 100 && colores[2]) ||
+            (progresoReal === 100 && colores[3]) ||
+            colores[0];
+
+          return (
+            <ODScard
+              mostrarProgreso
+              key={o.id}
+              o={o}
+              objetivosAsociados={
+                cantObjPorODS.find((p) => p.id == o.id)?.objetivos_asociados
+              }
+              porcentajeODS={porcentajesODS.find((p) => p.id == o.id)?.progreso}
+              cols='col-6 col-md-4 col-lg-2'
+              color={color}
+            />
+          );
+        })}
       </div>
     </div>
   );
