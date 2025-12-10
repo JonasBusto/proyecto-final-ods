@@ -12,18 +12,26 @@ import { FilterMatchMode } from 'primereact/api';
 import { InputText } from 'primereact/inputtext';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
-import { getColorBySemaforo } from '../helpers/indicadores';
+import {
+  formatDateIndicator,
+  getColorBySemaforo,
+} from '../helpers/indicadores';
 
 const letras = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 const ObjetivoIndicadores = ({ indicador, index }) => {
+  const [hover, setHover] = useState(false);
+
   const semaforos = indicador?.semaforos || null;
   const progresoIndicador = indicador?.done_ratio || 0;
-
   const colorInfo = getColorBySemaforo(progresoIndicador, semaforos);
 
   return (
-    <div style={{ marginLeft: '30px', marginBottom: '10px' }}>
+    <div
+      style={{ position: 'relative', marginLeft: '30px', marginBottom: '10px' }}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
       <p
         key={indicador.id}
         style={{
@@ -31,20 +39,106 @@ const ObjetivoIndicadores = ({ indicador, index }) => {
           fontWeight: 'bold',
           fontSize: '0.9rem',
           marginBottom: '3px',
+          cursor: 'pointer',
+          textDecoration: hover ? 'underline' : 'none',
         }}
       >
         {letras[index] + ') ' + (indicador?.subject || 'Indicador desconocido')}
-
         <span
-          style={{
-            marginLeft: '10px',
-            fontWeight: 'bold',
-            color: colorInfo,
-          }}
+          style={{ marginLeft: '10px', fontWeight: 'bold', color: colorInfo }}
         >
           ({progresoIndicador}%)
         </span>
       </p>
+
+      {hover && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '30px',
+            left: '0',
+            background: '#ffffff',
+            padding: '16px 20px',
+            borderRadius: '12px',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.25)',
+            minWidth: '280px',
+            width: '100%',
+            maxHeight: '300px',
+            overflowY: 'auto',
+            fontSize: '0.85rem',
+            color: '#333',
+            lineHeight: '1.4',
+            border: '1px solid #e0e0e0',
+          }}
+        >
+          <h4
+            style={{ margin: '0 0 10px 0', fontSize: '1rem', color: '#00458e' }}
+          >
+            {indicador?.subject || 'Sin especificar'}
+          </h4>
+          <div
+            style={{ marginBottom: '8px', fontSize: '0.8rem', color: '#555' }}
+          >
+            <p style={{ margin: '2px 0' }}>
+              <b>Código:</b> {indicador?.id || 'Sin especificar'}
+            </p>
+            <p style={{ margin: '2px 0' }}>
+              <b>Descripción:</b> {indicador?.description || 'Sin especificar'}
+            </p>
+            <p style={{ margin: '2px 0' }}>
+              <b>Fecha de Inicio:</b>{' '}
+              {formatDateIndicator(indicador?.start_date)}
+            </p>
+            <p style={{ margin: '2px 0' }}>
+              <b>Fecha Fin:</b> {formatDateIndicator(indicador?.due_date)}
+            </p>
+          </div>
+
+          <div style={{ marginBottom: '8px' }}>
+            <p
+              style={{
+                margin: '2px 0',
+                fontWeight: 'bold',
+                fontSize: '0.8rem',
+              }}
+            >
+              Avance: {progresoIndicador}%
+            </p>
+            <div
+              style={{
+                width: '100%',
+                height: '8px',
+                background: '#e5e5e5',
+                borderRadius: '4px',
+                overflow: 'hidden',
+              }}
+            >
+              <div
+                style={{
+                  width: `${progresoIndicador}%`,
+                  height: '100%',
+                  background: colorInfo,
+                  transition: 'width 0.3s ease',
+                }}
+              />
+            </div>
+          </div>
+
+          <div style={{ fontSize: '0.8rem', color: '#555' }}>
+            <p style={{ margin: '2px 0' }}>
+              <b>Prioridad:</b> {indicador?.priority?.name || 'Normal'}
+            </p>
+            <p style={{ margin: '2px 0' }}>
+              <b>Creado:</b> {formatDateIndicator(indicador?.created_on)}
+            </p>
+            <p style={{ margin: '2px 0' }}>
+              <b>Última actualización:</b>{' '}
+              {formatDateIndicator(indicador?.updated_on)}
+            </p>
+          </div>
+        </div>
+      )}
+
       <div
         style={{
           width: '100%',
