@@ -11,7 +11,7 @@ export const getColorBySemaforo = (progreso, semaforos) => {
   return '#000000';
 };
 
-export const formatDateIndicator = (dateString) => {
+export const formatDateRequest = (dateString) => {
   if (!dateString) return 'Sin especificar';
 
   const hasTime = /\d{2}:\d{2}(:\d{2})?/.test(dateString);
