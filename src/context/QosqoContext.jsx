@@ -95,6 +95,31 @@ export function QosqoProvider({ children }) {
     setPorcentajesODS([...arrayAuxPorc]);
   };
 
+  const obtenerSemaforosDeChildren = (children) => {
+    if (!children || children.length === 0) return [];
+
+    return children.map((child) => {
+      const min = child.custom_fields.find(
+        (c) => c.name === 'Semaforo Min'
+      )?.value;
+      const med = child.custom_fields.find(
+        (c) => c.name === 'Semaforo Med'
+      )?.value;
+      const max = child.custom_fields.find(
+        (c) => c.name === 'Semaforo Max'
+      )?.value;
+
+      return {
+        ...child,
+        semaforos: {
+          min: min ? Number(min) : null,
+          med: med ? Number(med) : null,
+          max: max ? Number(max) : null,
+        },
+      };
+    });
+  };
+
   const buscarProObj = (nombre_ods) => {
     let arrayAuxP = [];
     let arrayAuxPD = [];
@@ -127,7 +152,7 @@ export function QosqoProvider({ children }) {
 
       return {
         ...obj,
-        children: hijos.length ? hijos : [],
+        children: obtenerSemaforosDeChildren(hijos),
       };
     });
 

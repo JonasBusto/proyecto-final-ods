@@ -12,8 +12,60 @@ import { FilterMatchMode } from 'primereact/api';
 import { InputText } from 'primereact/inputtext';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
+import { getColorBySemaforo } from '../helpers/indicadores';
 
 const letras = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+const ObjetivoIndicadores = ({ indicador, index }) => {
+  const semaforos = indicador?.semaforos || null;
+  const progresoIndicador = indicador?.done_ratio || 0;
+
+  const colorInfo = getColorBySemaforo(progresoIndicador, semaforos);
+
+  return (
+    <div style={{ marginLeft: '30px', marginBottom: '10px' }}>
+      <p
+        key={indicador.id}
+        style={{
+          color: '#00458e',
+          fontWeight: 'bold',
+          fontSize: '0.9rem',
+          marginBottom: '3px',
+        }}
+      >
+        {letras[index] + ') ' + (indicador?.subject || 'Indicador desconocido')}
+
+        <span
+          style={{
+            marginLeft: '10px',
+            fontWeight: 'bold',
+            color: colorInfo,
+          }}
+        >
+          ({progresoIndicador}%)
+        </span>
+      </p>
+      <div
+        style={{
+          width: '100%',
+          height: '6px',
+          background: '#e5e5e5',
+          borderRadius: '4px',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            width: `${progresoIndicador}%`,
+            height: '100%',
+            background: colorInfo,
+            transition: 'width 0.3s ease',
+          }}
+        />
+      </div>
+    </div>
+  );
+};
 
 const ODS = () => {
   const {
@@ -132,23 +184,11 @@ const ODS = () => {
                     ) : (
                       <div>
                         {o.children.map((indicador, index) => (
-                          <p
+                          <ObjetivoIndicadores
                             key={indicador.id}
-                            style={{
-                              color: '#0e28ab',
-                              fontWeight: 'bold',
-                              fontSize: '0.9rem',
-                              marginBottom: 0,
-                              marginLeft: '30px',
-                            }}
-                          >
-                            {letras[index] +
-                              ') ' +
-                              (indicador?.subject || 'Indicador desconocido')}
-                            <span style={{ marginLeft: '10px', color: 'red' }}>
-                              ({indicador.done_ratio + '%'})
-                            </span>
-                          </p>
+                            indicador={indicador}
+                            index={index}
+                          />
                         ))}
                       </div>
                     )}
