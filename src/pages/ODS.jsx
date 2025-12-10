@@ -188,25 +188,46 @@ const ODS = () => {
               {arrayAuxFiltrado.map((o, index) => (
                 <li key={o.id} style={{ marginBottom: '8px' }}>
                   <div>
-                    <div style={{ position: 'relative' }}>
+                    <div
+                      style={{
+                        position: 'relative',
+                        display: 'inline-block',
+                        width: '100%',
+                      }}
+                    >
                       <p style={{ margin: 0 }}>
-                        {index + 1}. {o.subject} <b>({o.done_ratio + '%'})</b>
+                        {index + 1}. {o.subject}
+                        <b>({o.done_ratio + '%'})</b>
                         <i
                           onMouseEnter={() => setHoverIcon(o.id)}
                           onMouseLeave={() => setHoverIcon(null)}
+                          className='fa-solid fa-circle-question'
                           style={{
                             color: '#4d3e9f',
                             marginLeft: '10px',
                             cursor: 'pointer',
                           }}
-                          className='fa-solid fa-circle-question'
                         />
                       </p>
 
-                      <ObjetivoHoverCard
-                        objetivo={o}
-                        hover={hoverIcon === o.id}
-                      />
+                      {hoverIcon === o.id && (
+                        <div
+                          style={{
+                            position: 'absolute',
+                            top: '-10px',
+                            left: 0,
+                            width: '100%',
+                          }}
+                          onMouseEnter={() => setHoverIcon(o.id)}
+                          onMouseLeave={() => setHoverIcon(null)}
+                        >
+                          <DetailRequestQosqo
+                            title='Objetivo'
+                            data={o}
+                            progress={o.done_ratio}
+                          />
+                        </div>
+                      )}
                     </div>
                     {o.children.length === 0 ? (
                       <p
