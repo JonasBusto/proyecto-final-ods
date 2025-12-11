@@ -11,6 +11,7 @@ import objetivos from '../helpers/objetivos';
 import ODScard from '../components/ODScard';
 import Modal from 'react-bootstrap/Modal';
 import { HelpProjects } from '../components/modals/HelpProjects';
+import { getColorBySemaforo } from '../helpers/peticion';
 
 const Proyectos = () => {
   const { buscarProyecto, arrayProyectos } = useContext(QosqoContext);
@@ -96,19 +97,86 @@ const Proyectos = () => {
             <p>
               <b>Objetivo:</b> {objetivo.subject}
             </p>
-            <p>
-              <b>Progreso actual:</b> {objetivo.done_ratio + '%'}
-            </p>
-            <p>
-              <b>ODS asociados:</b>{' '}
-            </p>
-            <ul>
-              {objetivo.custom_fields.map(
-                (o) =>
-                  o.name == 'ODS' &&
-                  o.value.map((v) => <li key={Math.random() * 100}>{v}</li>)
+            <div>
+              <p>
+                <b>Progreso actual:</b> {objetivo.done_ratio + '%'}
+              </p>
+              <div
+                style={{
+                  width: '100%',
+                  height: '8px',
+                  background: '#e5e5e5',
+                  borderRadius: '4px',
+                  overflow: 'hidden',
+                }}
+              >
+                <div
+                  style={{
+                    width: `${objetivo.done_ratio}%`,
+                    height: '100%',
+                    background: 'blue',
+                    transition: 'width 0.3s ease',
+                  }}
+                />
+              </div>
+            </div>
+            <div style={{ marginTop: '10px' }}>
+              <p>
+                <b>ODS asociados:</b>{' '}
+              </p>
+              <ul>
+                {objetivo.custom_fields.map(
+                  (o) =>
+                    o.name == 'ODS' &&
+                    o.value.map((v) => <li key={Math.random() * 100}>{v}</li>)
+                )}
+              </ul>
+            </div>
+            <div style={{ marginTop: '10px' }}>
+              {objetivo.children.length === 0 ? (
+                <p
+                  style={{ fontWeight: 'bold', color: 'red', fontSize: '18px' }}
+                >
+                  * Este objetivo no tiene indicadores.
+                </p>
+              ) : (
+                <>
+                  <p>
+                    <b>Indicadores asociados:</b>
+                  </p>
+                  <ul>
+                    {objetivo.children.map((indicador, index) => (
+                      <li key={indicador.id}>
+                        <span>{`${index + 1}. ${indicador.subject} (${
+                          indicador?.done_ratio || 0
+                        }%)`}</span>
+                        <div
+                          style={{
+                            width: '100%',
+                            height: '8px',
+                            background: '#e5e5e5',
+                            borderRadius: '4px',
+                            overflow: 'hidden',
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: `${indicador.done_ratio}%`,
+                              height: '100%',
+                              background: getColorBySemaforo(
+                                indicador.done_ratio,
+                                indicador?.semaforos || null
+                              ),
+                              transition: 'width 0.3s ease',
+                            }}
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </>
               )}
-            </ul>
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <div className='btn-acciones'>
@@ -274,7 +342,6 @@ const Proyectos = () => {
               scrollable
               rows={5}
               emptyMessage='Sin resultados'
-              // rowsPerPageOptions={[5, 10, 25, 50]}
               value={arrayProyectos}
             >
               <Column
@@ -283,11 +350,6 @@ const Proyectos = () => {
                 header='Nombre del Proyecto'
                 style={{ minWidth: '250px' }}
               ></Column>
-              {/* <Column
-                header="Acción"
-                body={accion}
-                style={{ minWidth: "100px" }}
-              ></Column> */}
             </DataTable>
           </div>
         </div>
@@ -361,7 +423,6 @@ const Proyectos = () => {
                           header='Objetivo'
                           body={accion}
                           style={{ minWidth: '400px' }}
-                          // style={{ minWidth: "250px" }}
                         ></Column>
                         <Column
                           header='ODS'
@@ -369,7 +430,6 @@ const Proyectos = () => {
                           style={{ minWidth: '250px' }}
                         ></Column>
                         <Column
-                          // field={progresoTable}
                           header='Progreso'
                           body={progresoObjetivo}
                           style={{ minWidth: '100px' }}

@@ -16,9 +16,20 @@ export function QosqoProvider({ children }) {
   const [proyectosPorODS, setProyectosPorODS] = useState([]);
 
   const buscarProyecto = (id) => {
-    let arrayAux = odsQosqo.filter((p) => p.project.id == id);
+    const objetivos = odsQosqo.filter((p) => p.project.id == id);
 
-    return arrayAux;
+    if (objetivos.length === 0) return [];
+
+    const objetivosConHijos = objetivos.map((obj) => {
+      const hijos = odsQosqo.filter((item) => item.parent?.id === obj.id);
+
+      return {
+        ...obj,
+        children: obtenerSemaforosDeChildren(hijos),
+      };
+    });
+
+    return objetivosConHijos;
   };
 
   const calcularPorcentajesODS = (ods) => {
